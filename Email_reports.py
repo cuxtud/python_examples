@@ -4,14 +4,6 @@ import json
 token = "77937dc9-000c-4d70-b3db-0af0096c27b6"
 headers = {"Content-Type":"application/json","Accept":"application/json","Authorization": "BEARER " + (token)}
 
-# Fetch reports
-def getreports(id):
-    fetchreporturl = 'https://sandbox.morpheusdata.com/api/reports/'+str(id)
-    response = requests.get(fetchreporturl, headers=headers)
-    data = response.json()
-    print(data)
-
-#reports('378')
 
 # Generate Reports
 def runreports(type):
@@ -20,6 +12,20 @@ def runreports(type):
     b = json.dumps(body)
     response = requests.post(generatereporturl, headers=headers, data=b)
     data = response.json()
+    #rid = data['reportResult'][0]['id']
+    #print(str(rid))
+    rid = data['reportResult']['id']
+    return rid
+
+sid = runreports('appCost')
+print(sid)
+
+# Fetch reports
+def getreports(sid):
+    fetchreporturl = 'https://sandbox.morpheusdata.com/api/reports/'+str(sid)
+    response = requests.get(fetchreporturl, headers=headers)
+    data = response.json()
     print(data)
 
-runreports('appCost')
+getreports(sid)
+#runreports('appCost')
