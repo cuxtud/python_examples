@@ -28,4 +28,7 @@ def getreports(sid):
     print(data)
 
 getreports(sid)
-#runreports('appCost')
+
+##Things to do
+## Set the date range to 30 days
+## Format the report data in csv and send it via email
