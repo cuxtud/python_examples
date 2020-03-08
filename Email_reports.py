@@ -2,6 +2,7 @@ import requests
 import json
 import datetime
 import time
+import csv
 
 ##Get the current date in format YYYY-MM-DD
 x = datetime.datetime.now()
@@ -43,8 +44,21 @@ def getreports(sid):
     #rows = data['reportResult']['rows'][2]
     #This is for instance Cost
     rows = data['reportResult']
-    print(rows)
-
+    rtype = data['reportResult']['type']['name']
+    filterTitle = data['reportResult']['filterTitle']
+    print('\n'+rtype+'\n'+'\n'+filterTitle+'\n\nSummary\n')
+    fname = "output.csv"
+    with open(fname, "w") as file:
+        csv_file = csv.writer(file)
+        csv_file.writerow([rtype])
+        csv_file.writerow([filterTitle])
+        csv_file.writerow(["Summary"])
+        csv_file.writerow(["Name","Cost","Price"])
+        for i in data['reportResult']['rows']:
+            for k,v in i.items():
+                if k == 'data':
+                    #print(v)
+                    #csv_file.writerow([v])
 
 #time.sleep(20)
 getreports(418)
