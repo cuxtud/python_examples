@@ -21,9 +21,9 @@ s = datetime.datetime.now() - datetime.timedelta(30)
 sd = (s.strftime("%Y")+"-"+s.strftime("%m")+"-"+s.strftime("%d"))
 startdate=str(sd)
 
-token = {{ lookup('cypher','secret=secret/anish') }}
-print (token)
-#token = "77937dc9-000c-4d70-b3db-0af0096c27b6"
+# Update the token below
+# If token can't be set here as plain text then store it in a file in the morpheus app server and then read from that file and pass it to the token variable.
+token = "token goes here"
 headers = {"Content-Type":"application/json","Accept":"application/json","Authorization": "BEARER " + (token)}
 
 
@@ -83,8 +83,8 @@ def getreports(sid):
                         csv_file.writerow([value['name'],round(value['cost'],2),round(value['price'],2),value['currency']])
 
 def send_mail():
-    fromaddr = "aabraham@morpheusdata.com"
-    toaddr = "aabraham@morpheusdata.com"
+    fromaddr = "info@morpheusdata.com"
+    toaddr = "myemail@email.com"
     
     # instance of MIMEMultipart 
     msg = MIMEMultipart() 
@@ -142,13 +142,13 @@ def send_mail():
 
 
 # Send API to morpheus to run the report. The intanceCost below is the reporttype used.
-#sid = runreports('instanceCost')
+sid = runreports('instanceCost')
 
 ##Sleeping for 20 seconds to let the report generate
-#time.sleep(20)
+time.sleep(20)
 
 #Fetch the report which was generated and then parse the value to write to a CSV. This will write to a CSV on the morpheus app server in /tmp as InstanceCost.csv
-#getreports(sid)
+getreports(sid)
 
 #Send email with the InstanceCost.csv as an attachment
-#send_mail()
+send_mail()
