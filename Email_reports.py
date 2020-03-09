@@ -4,7 +4,10 @@ import datetime
 import time
 import csv
 import smtplib 
-
+from email.mime.multipart import MIMEMultipart 
+from email.mime.text import MIMEText 
+from email.mime.base import MIMEBase 
+from email import encoders 
 
 ##Get the current date in format YYYY-MM-DD
 x = datetime.datetime.now()
@@ -49,7 +52,7 @@ def getreports(sid):
     rtype = data['reportResult']['type']['name']
     filterTitle = data['reportResult']['filterTitle']
     
-    print('\n'+rtype+'\n'+'\n'+filterTitle+'\n\nSummary\n')
+    #print('\n'+rtype+'\n'+'\n'+filterTitle+'\n\nSummary\n')
     #fname = "InstanceCostReport.csv"
     fname = "/tmp/InstanceCostReport.csv"
     with open(fname, "w") as file:
@@ -78,47 +81,47 @@ def getreports(sid):
                         csv_file.writerow([value['name'],round(value['cost'],2),round(value['price'],2),value['currency']])
 
 def send_mail():
-    fromaddr = "info@morpheusdata.com"
+    fromaddr = "aabraham@morpheusdata.com"
     toaddr = "aabraham@morpheusdata.com"
     
     # instance of MIMEMultipart 
-    #msg = MIMEMultipart() 
+    msg = MIMEMultipart() 
     
     # storing the senders email address   
-    #msg['From'] = fromaddr 
+    msg['From'] = fromaddr 
     
     # storing the receivers email address  
-    #msg['To'] = toaddr 
+    msg['To'] = toaddr 
     
     # storing the subject  
-    #msg['Subject'] = "Monthly Instance Cost Report"
+    msg['Subject'] = "Monthly Instance Cost Report"
     
     # string to store the body of the mail 
-    body = "Hello, /n/t Attached is the monthly Instance Cost Report /nThanks,/nMorpheusData"
+    body = "Hello, Attached is the monthly Instance Cost Report. Thanks MorpheusData"
     
     # attach the body with the msg instance 
-    #msg.attach(MIMEText(body, 'plain')) 
+    msg.attach(MIMEText(body, 'plain')) 
     
     # open the file to be sent  
-    #filename = "InstanceCostReport.csv"
-    #attachment = open("/tmp/InstanceCostReport.csv", "rb") 
+    filename = "InstanceCostReport.csv"
+    attachment = open("/tmp/InstanceCostReport.csv", "rb") 
     
     # instance of MIMEBase and named as p 
-    #p = MIMEBase('application', 'octet-stream') 
+    p = MIMEBase('application', 'octet-stream') 
     
     # To change the payload into encoded form 
-    #p.set_payload((attachment).read()) 
+    p.set_payload((attachment).read()) 
     
     # encode into base64 
-    #encoders.encode_base64(p) 
+    encoders.encode_base64(p) 
     
-    #p.add_header('Content-Disposition', "attachment; filename= %s" % filename) 
+    p.add_header('Content-Disposition', "attachment; filename= %s" % filename) 
     
     # attach the instance 'p' to instance 'msg' 
-    #msg.attach(p) 
+    msg.attach(p) 
     
     # creates SMTP session 
-    s = smtplib.SMTP('127.0.0.1') 
+    s = smtplib.SMTP('127.0.0.1', 25) 
     
     # start TLS for security 
     #s.starttls() 
@@ -127,10 +130,10 @@ def send_mail():
     #s.login(fromaddr, "password") 
     
     # Converts the Multipart msg into a string 
-    #text = msg.as_string() 
+    text = msg.as_string() 
     
     # sending the mail 
-    s.sendmail(fromaddr, toaddr, body) 
+    s.sendmail(fromaddr, toaddr, text) 
     
     # terminating the session 
     s.quit() 
@@ -138,9 +141,10 @@ def send_mail():
 
 
 #getreports(419)
+
+sid = runreports('instanceCost')
+time.sleep(20)
+getreports(sid)
 send_mail()
-#sid = runreports('instanceCost')
-#time.sleep(20)
-#getreports(sid)
 ##Things to do 
 ## Send email with the attachment
