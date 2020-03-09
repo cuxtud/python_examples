@@ -104,7 +104,7 @@ def send_mail():
     
     # open the file to be sent  
     filename = "InstanceCostReport.csv"
-    attachment = open("/var/opt/morpheus/morpheus-ui/", "rb") 
+    attachment = open("/tmp/InstanceCostReport.csv", "rb") 
     
     # instance of MIMEBase and named as p 
     p = MIMEBase('application', 'octet-stream') 
