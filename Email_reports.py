@@ -53,7 +53,8 @@ def getreports(sid):
     filterTitle = data['reportResult']['filterTitle']
     
     print('\n'+rtype+'\n'+'\n'+filterTitle+'\n\nSummary\n')
-    fname = "output.csv"
+    #fname = "InstanceCostReport.csv"
+    fname = "/var/opt/morpheus/morpheus-ui/InstanceCostReport.csv"
     with open(fname, "w") as file:
         csv_file = csv.writer(file)
         csv_file.writerow([rtype])
@@ -79,18 +80,70 @@ def getreports(sid):
                     else:
                         csv_file.writerow([value['name'],round(value['cost'],2),round(value['price'],2),value['currency']])
 
-def sendemail():
+def send_mail():
+    fromaddr = "aabraham@morpheusdata.com"
+    toaddr = "aabraham@morpheusdata.com"
+    
+    # instance of MIMEMultipart 
+    msg = MIMEMultipart() 
+    
+    # storing the senders email address   
+    msg['From'] = fromaddr 
+    
+    # storing the receivers email address  
+    msg['To'] = toaddr 
+    
+    # storing the subject  
+    msg['Subject'] = "Monthly Instance Cost Report"
+    
+    # string to store the body of the mail 
+    body = "Hello, /n/t Attached is the monthly Instance Cost Report /nThanks,/nMorpheusData"
+    
+    # attach the body with the msg instance 
+    msg.attach(MIMEText(body, 'plain')) 
+    
+    # open the file to be sent  
+    filename = "InstanceCostReport.csv"
+    attachment = open("/var/opt/morpheus/morpheus-ui/", "rb") 
+    
+    # instance of MIMEBase and named as p 
+    p = MIMEBase('application', 'octet-stream') 
+    
+    # To change the payload into encoded form 
+    p.set_payload((attachment).read()) 
+    
+    # encode into base64 
+    encoders.encode_base64(p) 
+    
+    p.add_header('Content-Disposition', "attachment; filename= %s" % filename) 
+    
+    # attach the instance 'p' to instance 'msg' 
+    msg.attach(p) 
+    
+    # creates SMTP session 
+    s = smtplib.SMTP('info@gomorpheus.com', 587) 
+    
+    # start TLS for security 
+    #s.starttls() 
+    
+    # Authentication 
+    #s.login(fromaddr, "password") 
+    
+    # Converts the Multipart msg into a string 
+    text = msg.as_string() 
+    
+    # sending the mail 
+    s.sendmail(fromaddr, toaddr, text) 
+    
+    # terminating the session 
+    s.quit() 
 
 
+
+getreports(419)
+#send_mail()
 #sid = runreports('instanceCost')
 #time.sleep(20)
 #getreports(sid)
-getreports(419)
-
-
 ##Things to do 
-## Format the report data return in rows to print Summary of Report and then 
-# loop the data to put them in colomns and write to CSV.
-
-##Things completed
-# The print rows in getreports now displays he content of the report what we see in UI
+## Send email with the attachment
