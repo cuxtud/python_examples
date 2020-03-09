@@ -21,7 +21,7 @@ s = datetime.datetime.now() - datetime.timedelta(30)
 sd = (s.strftime("%Y")+"-"+s.strftime("%m")+"-"+s.strftime("%d"))
 startdate=str(sd)
 
-token = "lookup('cypher','secret=secret/anish')"
+token = lookup('cypher','secret=secret/anish')
 print (token)
 #token = "77937dc9-000c-4d70-b3db-0af0096c27b6"
 headers = {"Content-Type":"application/json","Accept":"application/json","Authorization": "BEARER " + (token)}
