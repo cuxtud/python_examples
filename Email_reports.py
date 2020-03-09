@@ -32,7 +32,7 @@ def runreports(type):
     rid = data['reportResult']['id']
     return rid
 
-#sid = runreports('instanceCost')
+
 #print(sid)
 
 # Fetch reports
@@ -64,10 +64,10 @@ def getreports(sid):
                     else:
                         csv_file.writerow([value['name'],round(value['cost'],2),round(value['price'],2),value['currency']])
 
+sid = runreports('instanceCost')
+time.sleep(20)
+getreports(sid)
 
-#time.sleep(20)
-getreports(418)
-#print(rdata)
 
 ##Things to do 
 ## Format the report data return in rows to print Summary of Report and then 
