@@ -121,7 +121,7 @@ def send_mail():
     msg.attach(p) 
     
     # creates SMTP session 
-    s = smtplib.SMTP('info@gomorpheus.com', 587) 
+    s = smtplib.SMTP('127.0.0.1', 25) 
     
     # start TLS for security 
     #s.starttls() 
