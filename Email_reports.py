@@ -54,7 +54,7 @@ def getreports(sid):
     
     print('\n'+rtype+'\n'+'\n'+filterTitle+'\n\nSummary\n')
     #fname = "InstanceCostReport.csv"
-    fname = "/var/opt/morpheus/morpheus-ui/InstanceCostReport.csv"
+    fname = "/tmp/InstanceCostReport.csv"
     with open(fname, "w") as file:
         csv_file = csv.writer(file)
         csv_file.writerow([rtype])
