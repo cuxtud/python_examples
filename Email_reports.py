@@ -141,7 +141,7 @@ def send_mail():
 
 
 getreports(419)
-#send_mail()
+send_mail()
 #sid = runreports('instanceCost')
 #time.sleep(20)
 #getreports(sid)
