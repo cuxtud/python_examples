@@ -3,6 +3,11 @@ import json
 import datetime
 import time
 import csv
+import smtplib 
+from email.mime.multipart import MIMEMultipart 
+from email.mime.text import MIMEText 
+from email.mime.base import MIMEBase 
+from email import encoders 
 
 ##Get the current date in format YYYY-MM-DD
 x = datetime.datetime.now()
@@ -46,6 +51,7 @@ def getreports(sid):
     rows = data['reportResult']
     rtype = data['reportResult']['type']['name']
     filterTitle = data['reportResult']['filterTitle']
+    
     print('\n'+rtype+'\n'+'\n'+filterTitle+'\n\nSummary\n')
     fname = "output.csv"
     with open(fname, "w") as file:
@@ -53,6 +59,15 @@ def getreports(sid):
         csv_file.writerow([rtype])
         csv_file.writerow([filterTitle])
         csv_file.writerow(["Summary"])
+        csv_file.writerow(["Name","Value"])
+        for i in data['reportResult']['rows']:
+            for k,v in i.items():
+                if k == 'data':
+                    value = json.loads(v)
+                    #print(value)
+                    if "code" in value:
+                        csv_file.writerow([value['name'],round(value['value'],2)])
+                        #print(value['name'],value['value'])
         csv_file.writerow(["Name","Cost","Price","Currency"])
         for i in data['reportResult']['rows']:
             for k,v in i.items():
@@ -64,9 +79,13 @@ def getreports(sid):
                     else:
                         csv_file.writerow([value['name'],round(value['cost'],2),round(value['price'],2),value['currency']])
 
-sid = runreports('instanceCost')
-time.sleep(20)
-getreports(sid)
+def sendemail():
+
+
+#sid = runreports('instanceCost')
+#time.sleep(20)
+#getreports(sid)
+getreports(419)
 
 
 ##Things to do 
