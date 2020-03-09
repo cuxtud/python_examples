@@ -21,7 +21,9 @@ s = datetime.datetime.now() - datetime.timedelta(30)
 sd = (s.strftime("%Y")+"-"+s.strftime("%m")+"-"+s.strftime("%d"))
 startdate=str(sd)
 
-token = "77937dc9-000c-4d70-b3db-0af0096c27b6"
+token = "lookup('cypher','secret=secret/anish')"
+print (token)
+#token = "77937dc9-000c-4d70-b3db-0af0096c27b6"
 headers = {"Content-Type":"application/json","Accept":"application/json","Authorization": "BEARER " + (token)}
 
 
@@ -139,12 +141,14 @@ def send_mail():
     s.quit() 
 
 
+# Send API to morpheus to run the report. The intanceCost below is the reporttype used.
+#sid = runreports('instanceCost')
 
-#getreports(419)
+##Sleeping for 20 seconds to let the report generate
+#time.sleep(20)
 
-sid = runreports('instanceCost')
-time.sleep(20)
-getreports(sid)
-send_mail()
-##Things to do 
-## Send email with the attachment
+#Fetch the report which was generated and then parse the value to write to a CSV. This will write to a CSV on the morpheus app server in /tmp as InstanceCost.csv
+#getreports(sid)
+
+#Send email with the InstanceCost.csv as an attachment
+#send_mail()
