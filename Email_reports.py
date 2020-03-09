@@ -53,18 +53,23 @@ def getreports(sid):
         csv_file.writerow([rtype])
         csv_file.writerow([filterTitle])
         csv_file.writerow(["Summary"])
-        csv_file.writerow(["Name","Cost","Price"])
+        csv_file.writerow(["Name","Cost","Price","Currency"])
         for i in data['reportResult']['rows']:
             for k,v in i.items():
                 if k == 'data':
-                    #print(v)
-                    #csv_file.writerow([v])
+                    value = json.loads(v)
+                    #print(value)
+                    if "code" in value:
+                        continue
+                    else:
+                        csv_file.writerow([value['name'],round(value['cost'],2),round(value['price'],2),value['currency']])
+
 
 #time.sleep(20)
 getreports(418)
 #print(rdata)
 
-##Things to do
+##Things to do 
 ## Format the report data return in rows to print Summary of Report and then 
 # loop the data to put them in colomns and write to CSV.
 
