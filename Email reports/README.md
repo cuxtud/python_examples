@@ -1,7 +1,7 @@
 # Email reports
 
 Send monthly/weekly/daily reports generated in morpheus to an email id.
-This will generate the report for the last 30days. Parse the outout of the report and write to CSV. Send the CSV as an attachment in email.
+This will generate the report for the last 30days. Parse the output of the report and write to CSV. Send the CSV as an attachment in email.
 
 ## Getting Started
 
