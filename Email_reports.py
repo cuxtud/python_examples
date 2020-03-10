@@ -42,7 +42,7 @@ def getreports(sid):
     fetchreporturl = 'https://sandbox.morpheusdata.com/api/reports/'+str(sid)
     response = requests.get(fetchreporturl, headers=headers)
     data = response.json()
-    rows = data['reportResult']
+    #rows = data['reportResult']
     rtype = data['reportResult']['type']['name']
     filterTitle = data['reportResult']['filterTitle']
     fname = "/tmp/InstanceCostReport.csv"
