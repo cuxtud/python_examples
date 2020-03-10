@@ -56,16 +56,13 @@ def getreports(sid):
             for k,v in i.items():
                 if k == 'data':
                     value = json.loads(v)
-                    #print(value)
                     if "code" in value:
                         csv_file.writerow([value['name'],round(value['value'],2)])
-                        #print(value['name'],value['value'])
         csv_file.writerow(["Name","Cost","Price","Currency"])
         for i in data['reportResult']['rows']:
             for k,v in i.items():
                 if k == 'data':
                     value = json.loads(v)
-                    #print(value)
                     if "code" in value:
                         continue
                     else:
