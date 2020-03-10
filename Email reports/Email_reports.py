@@ -34,28 +34,17 @@ def runreports(type):
     b = json.dumps(body)
     response = requests.post(generatereporturl, headers=headers, data=b)
     data = response.json()
-    #rid = data['reportResult'][0]['id']
-    #print(str(rid))
     rid = data['reportResult']['id']
     return rid
-
-
-#print(sid)
 
 # Fetch reports
 def getreports(sid):
     fetchreporturl = 'https://sandbox.morpheusdata.com/api/reports/'+str(sid)
     response = requests.get(fetchreporturl, headers=headers)
     data = response.json()
-    #This is for app Cost
-    #rows = data['reportResult']['rows'][2]
-    #This is for instance Cost
-    rows = data['reportResult']
+    #rows = data['reportResult']
     rtype = data['reportResult']['type']['name']
     filterTitle = data['reportResult']['filterTitle']
-    
-    #print('\n'+rtype+'\n'+'\n'+filterTitle+'\n\nSummary\n')
-    #fname = "InstanceCostReport.csv"
     fname = "/tmp/InstanceCostReport.csv"
     with open(fname, "w") as file:
         csv_file = csv.writer(file)
@@ -67,16 +56,13 @@ def getreports(sid):
             for k,v in i.items():
                 if k == 'data':
                     value = json.loads(v)
-                    #print(value)
                     if "code" in value:
                         csv_file.writerow([value['name'],round(value['value'],2)])
-                        #print(value['name'],value['value'])
         csv_file.writerow(["Name","Cost","Price","Currency"])
         for i in data['reportResult']['rows']:
             for k,v in i.items():
                 if k == 'data':
                     value = json.loads(v)
-                    #print(value)
                     if "code" in value:
                         continue
                     else:
@@ -86,58 +72,22 @@ def send_mail():
     fromaddr = "info@morpheusdata.com"
     toaddr = "myemail@email.com"
     
-    # instance of MIMEMultipart 
-    msg = MIMEMultipart() 
-    
-    # storing the senders email address   
+    msg = MIMEMultipart()   
     msg['From'] = fromaddr 
-    
-    # storing the receivers email address  
-    msg['To'] = toaddr 
-    
-    # storing the subject  
+    msg['To'] = toaddr  
     msg['Subject'] = "Monthly Instance Cost Report"
-    
-    # string to store the body of the mail 
     body = "Hello, Attached is the monthly Instance Cost Report. Thanks MorpheusData"
-    
-    # attach the body with the msg instance 
     msg.attach(MIMEText(body, 'plain')) 
-    
-    # open the file to be sent  
     filename = "InstanceCostReport.csv"
     attachment = open("/tmp/InstanceCostReport.csv", "rb") 
-    
-    # instance of MIMEBase and named as p 
     p = MIMEBase('application', 'octet-stream') 
-    
-    # To change the payload into encoded form 
     p.set_payload((attachment).read()) 
-    
-    # encode into base64 
     encoders.encode_base64(p) 
-    
     p.add_header('Content-Disposition', "attachment; filename= %s" % filename) 
-    
-    # attach the instance 'p' to instance 'msg' 
     msg.attach(p) 
-    
-    # creates SMTP session 
     s = smtplib.SMTP('127.0.0.1', 25) 
-    
-    # start TLS for security 
-    #s.starttls() 
-    
-    # Authentication 
-    #s.login(fromaddr, "password") 
-    
-    # Converts the Multipart msg into a string 
     text = msg.as_string() 
-    
-    # sending the mail 
     s.sendmail(fromaddr, toaddr, text) 
-    
-    # terminating the session 
     s.quit() 
 
 
