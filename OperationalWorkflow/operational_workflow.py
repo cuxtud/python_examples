@@ -6,7 +6,7 @@ import json
 
 def executeJenkinsWorkflow():
     #url = ""
-    body = {"businessService": (morpheus['customOptions']['fvminstancename']),"location": (morphus['customOptions']['fvmlocation']), "usage": (morpheus['customOptions']['fvmusage']),"vmcpu": (morpheus['customOptions']['fvmcpu']),"vmmemory": (morpheus['customOptions']['fvmmemory']),"instancename": (['customOptions']['fvminstancename']),"centrifyZone": (morpheus['customOptions']['fvmcentrifyzone'])}
+    body = {"businessService": (morpheus['customOptions']['fvminstancename']), "location": (morpheus['customOptions']['fvmlocation']), "usage": (morpheus['customOptions']['fvmusage']), "vmcpu": (morpheus['customOptions']['fvmcpu']), "vmmemory": (morpheus['customOptions']['fvmmemory']), "instancename": (morpheus['customOptions']['fvminstancename']), "centrifyZone": (morpheus['customOptions']['fvmcentrifyzone'])}
     b = json.dumps(body)
     print(b)
     #response = requests.post(generatereporturl, headers=headers, data=b)
