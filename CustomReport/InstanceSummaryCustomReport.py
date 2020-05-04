@@ -57,7 +57,7 @@ def report():
     response = requests.get(apiUrl, headers=headers)
     data = response.json()
     #dc=data['billingInfo']['startDate']
-    return data
+    print(data)
 
 report()
 
