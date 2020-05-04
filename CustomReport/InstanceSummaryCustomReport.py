@@ -48,7 +48,7 @@ metadataValue=billingInfo(zones(0(instances(instances(0(containers(0(usages(0(me
 
 # Update the token below
 # If token can't be set here as plain text then store it in a file in the morpheus app server and then read from that file and pass it to the token variable.
-token = "token goes here"
+token = "43c4a82f-ee4d-4ac1-b88c-2492a7e6a3bc"
 headers = {"Content-Type":"application/json","Accept":"application/json","Authorization": "BEARER " + (token)}
 
 #Datecreated
