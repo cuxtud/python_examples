@@ -20,8 +20,14 @@ def getSql():
     mycursor = mydb.cursor()
     mycursor.execute("select name, date_created, cores_per_socket, status, plan_id, max_cores, provision_zone_id, max_memory, max_storage, created_by_id from instance")
     myresult = mycursor.fetchall()
-    for x in myresult:
-        print(x)
+    #for x in myresult:
+    #    print(x)
+    column_names = [i[0] for i in mycursor.description]
+    fp = open('/tmp/report.csv', 'w')
+    myFile = csv.writer(fp, lineterminator = '\n')
+    myFile.writerow(column_names)   
+    myFile.writerows(myresult)
+    fp.close()
 
 getSql()
 
