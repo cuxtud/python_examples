@@ -56,8 +56,8 @@ def report():
     apiUrl = 'https://10.30.20.164/api/billing/account/1'
     response = requests.post(apiUrl, headers=headers)
     data = response.json()
-    dc=data['billingInfo']['startDate']
-    return dc
+    #dc=data['billingInfo']['startDate']
+    return data
 
 report()
 
