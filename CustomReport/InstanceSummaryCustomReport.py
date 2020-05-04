@@ -9,7 +9,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText 
 from email.mime.base import MIMEBase 
 from email import encoders 
-
+'''
 def getSql():
     mydb = mysql.connector.connect(
         host="127.0.0.1",
@@ -30,4 +30,35 @@ def getSql():
     fp.close()
 
 getSql()
+'''
+# Below is what we need to parse
+
+'''
+Datecreated=billingInfo(startDate)
+Cloud= billingInfo(zones(0(zoneName))
+servername=billingInfo(zones(0(instances(instances(0(name))))))
+plan name=billingInfo(zones(0(instances(instances(0(containers(0(usages(0(servicePlanName))))))))))
+cores= billingInfo(zones(0(instances(instances(0(containers(0(usages(0(applicablePrices(0(prices(1(quantity))))))))))))))
+memory= billingInfo(zones(0(instances(instances(0(containers(0(usages(0(applicablePrices(0(prices(0(quantity))))))))))))))
+storage= billingInfo(zones(0(instances(instances(0(containers(0(usages(0(applicablePrices(0(prices(3(quantity))))))))))))))
+Create by username=billingInfo(zones(0(instances(instances(0(containers(0(usages(0(createdByUser))))))))))
+metadataName=billingInfo(zones(0(instances(instances(0(containers(0(usages(0(metadata(0(name))))))))))))
+metadataValue=billingInfo(zones(0(instances(instances(0(containers(0(usages(0(metadata(0(value)))))))))))
+'''
+
+# Update the token below
+# If token can't be set here as plain text then store it in a file in the morpheus app server and then read from that file and pass it to the token variable.
+token = "token goes here"
+headers = {"Content-Type":"application/json","Accept":"application/json","Authorization": "BEARER " + (token)}
+
+#Datecreated
+def report():
+    apiUrl = 'https://10.30.20.164/api/billing/account/1'
+    response = requests.post(apiUrl, headers=headers)
+    data = response.json()
+    dc=data['billingInfo']['startDate']
+    return dc
+
+report()
+
 
