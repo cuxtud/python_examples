@@ -4,7 +4,6 @@ import datetime
 import time
 import csv
 import smtplib 
-import mysql.connector
 from email.mime.multipart import MIMEMultipart 
 from email.mime.text import MIMEText 
 from email.mime.base import MIMEBase 
@@ -54,10 +53,33 @@ headers = {"Content-Type":"application/json","Accept":"application/json","Author
 #Datecreated
 def report():
     apiUrl = 'https://10.30.20.164/api/billing/account/1'
-    response = requests.get(apiUrl, headers=headers)
+    response = requests.get(apiUrl, headers=headers, verify=False)
     data = response.json()
-    #dc=data['billingInfo']['startDate']
-    print(data)
+    dc = data['billingInfo']['startDate']
+    cloudName = data['billingInfo']['zones'][0]['zoneName']
+    serverName = data['billingInfo']['zones'][0]['instances']['instances'][0]['name']
+    planName = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['servicePlanName']
+    coresCount = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['applicablePrices'][0]['prices'][1]['quantity']
+    memoryValue = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['applicablePrices'][0]['prices'][0]['quantity']
+    storageGB = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['applicablePrices'][0]['prices'][3]['quantity']
+    createdBy = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['createdByUser']
+    meta0Name = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['metadata'][0]['name']
+    meta0Value = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['metadata'][0]['value']
+    meta1Name = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['metadata'][1]['name']
+    meta1Value = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['metadata'][1]['value']
+    print("Date Created: " +dc)
+    print("Cloud Name: " +cloudName)
+    print("Server Name: " + serverName)
+    print("Plan: " + planName)
+    print("Total Cores: " + str(coresCount))
+    print("Memory (MB): " + str(memoryValue))
+    print("Total Stoage (GB): " + str(storageGB))
+    print("Create by: " + createdBy)
+    print("Tag Name: " + meta0Name)
+    print("Tag Value: " + meta0Value)
+    print("Tag Name: " + meta1Name)
+    print("Tag Value: " + meta1Value)
+
 
 report()
 
