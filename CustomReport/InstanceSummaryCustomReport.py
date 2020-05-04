@@ -12,9 +12,9 @@ from email import encoders
 
 def getSql():
     mydb = mysql.connector.connect(
-        host="127.0.0.1"
-        user="morpheus"
-        password="e920bc9fb0659a5257df814c"
+        host="127.0.0.1",
+        user="morpheus",
+        password="e920bc9fb0659a5257df814c",
         database="morpheus"
     )
     mycursor = mydb.cursor()
