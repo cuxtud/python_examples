@@ -41,6 +41,7 @@ cores= billingInfo(zones(0(instances(instances(0(containers(0(usages(0(applicabl
 memory= billingInfo(zones(0(instances(instances(0(containers(0(usages(0(applicablePrices(0(prices(0(quantity))))))))))))))
 storage= billingInfo(zones(0(instances(instances(0(containers(0(usages(0(applicablePrices(0(prices(3(quantity))))))))))))))
 Create by username=billingInfo(zones(0(instances(instances(0(containers(0(usages(0(createdByUser))))))))))
+
 metadataName=billingInfo(zones(0(instances(instances(0(containers(0(usages(0(metadata(0(name))))))))))))
 metadataValue=billingInfo(zones(0(instances(instances(0(containers(0(usages(0(metadata(0(value)))))))))))
 '''
@@ -51,7 +52,7 @@ token = "43c4a82f-ee4d-4ac1-b88c-2492a7e6a3bc"
 headers = {"Content-Type":"application/json","Accept":"application/json","Authorization": "BEARER " + (token)}
 
 #Datecreated
-def report():
+def testreport():
     apiUrl = 'https://10.30.20.164/api/billing/account/1'
     response = requests.get(apiUrl, headers=headers, verify=False)
     data = response.json()
@@ -80,6 +81,45 @@ def report():
     print("Tag Name: " + meta1Name)
     print("Tag Value: " + meta1Value)
 
+
+#testreport()
+
+def report():
+    apiUrl = 'https://10.30.20.164/api/billing/account/1'
+    response = requests.get(apiUrl, headers=headers, verify=False)
+    data = response.json()
+    dc = data['billingInfo']['startDate']
+    cloudName = data['billingInfo']['zones'][0]['zoneName']
+    serverName = data['billingInfo']['zones'][0]['instances']['instances'][0]['name']
+    planName = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['servicePlanName']
+    coresCount = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['applicablePrices'][0]['prices'][1]['quantity']
+    memoryValue = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['applicablePrices'][0]['prices'][0]['quantity']
+    storageGB = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['applicablePrices'][0]['prices'][3]['quantity']
+    createdBy = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['createdByUser']
+    meta0Name = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['metadata'][0]['name']
+    meta0Value = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['metadata'][0]['value']
+    meta1Name = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['metadata'][1]['name']
+    meta1Value = data['billingInfo']['zones'][0]['instances']['instances'][0]['containers'][0]['usages'][0]['metadata'][1]['value']
+    fname = "C:/Anish/customInventorySummaryReport.csv"
+    with open(fname, "w") as file:
+        csv_file = csv.writer(file)
+        csv_file.writerow(["Summary"])
+        csv_file.writerow(["Date Created","Cloud", "Server Name", "Plan Name", "Cores Count", "Memory (MB)", "Storage (GB)", "Created By", "Name", "Value"])
+        #for i in data['billingInfo']['zones']:
+        for i in data['billingInfo']:
+            print(i)
+        #csv_file.writerow([dc])
+        #csv_file.writerow([cloudName])
+        #csv_file.writerow([serverName])
+        #csv_file.writerow([planName])
+        #csv_file.writerow([coresCount])
+        #csv_file.writerow([memoryValue])
+        #csv_file.writerow([storageGB])
+        #csv_file.writerow([createdBy])
+        #csv_file.writerow([meta0Name])
+        #csv_file.writerow([meta0Value])
+        #csv_file.writerow([meta1Name])
+        #csv_file.writerow([meta1Value])
 
 report()
 
