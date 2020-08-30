@@ -47,7 +47,7 @@ create_bucket(mbname)
 #set_object_keys(mbname, True, name="My Name", colour="purple")
 time.sleep(10)
 s3 = boto3.resource('s3')
-bucket_tagging = s3.BucketTagging('mbname')
+bucket_tagging = s3.BucketTagging(mbname)
 tags = bucket_tagging.tag_set
 tags.append({'Key':'Owner', 'Value': 'owner'})
 Set_tag = bucket_tagging.put(Tagging={'TagSet' :tags})
