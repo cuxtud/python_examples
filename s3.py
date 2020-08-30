@@ -7,7 +7,7 @@ def create_bucket(bucket_name):
     s3_client = boto3.client('s3')
     s3_client.create_bucket(Bucket=bucket_name)
 
-def set_object_keys(bucket_name, update=True, **new_tags):
+def set_bucket_keys(bucket_name, update=True, **new_tags):
     """
     Add/Update/Overwrite tags to AWS S3 Object
 
@@ -23,24 +23,22 @@ def set_object_keys(bucket_name, update=True, **new_tags):
     old_tags = {}
 
     if update:
-        old = client.get_object_tagging(
-            Bucket=bucket_name,
-            Key=key,
-        )
-
-        old_tags = {i['Key']: i['Value'] for i in old['TagSet']}
+        try:
+            old = client.get_bucket_tagging(Bucket=bucket_name)
+            old_tags = {i['Key']: i['Value'] for i in old['TagSet']}
+        except Exception as e:
+            print(e)
+            print("there was no tag")
 
     new_tags = {**old_tags, **new_tags}
 
-    response = client.put_object_tagging(
+    response = client.put_bucket_tagging(
         Bucket=bucket_name,
-        Key=key,
         Tagging={
             'TagSet': [{'Key': str(k), 'Value': str(v)} for k, v in new_tags.items()]
         }
     )
-
-    return response['ResponseMetadata']['HTTPStatusCode'] == 200
+    print(response)
 
 create_bucket(mbname)
-set_object_keys(mbname, name="My Name", colour="purple")
+set_object_keys(mbname, True, name="My Name", colour="purple")
