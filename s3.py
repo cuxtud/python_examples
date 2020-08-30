@@ -15,7 +15,7 @@ def set_bucket_keys(bucket_name, update=True, **new_tags):
     :param update: If True: appends new tags else overwrites all tags with **kwargs
     :param new_tags: A dictionary of key:value pairs 
     :return: True if successful 
-    """
+    
 
     #  I prefer to have this var outside of the method. Added for completeness
     client = boto3.client('s3')   
@@ -39,6 +39,7 @@ def set_bucket_keys(bucket_name, update=True, **new_tags):
         }
     )
     print(response)
+    """
 
 
 create_bucket(mbname)
