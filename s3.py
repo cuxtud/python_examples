@@ -30,7 +30,7 @@ def set_object_keys(bucket_name, key, update=True, **new_tags):
 
         old_tags = {i['Key']: i['Value'] for i in old['TagSet']}
 
-    new_tags = {**old_tags, **new_tags}
+    new_tags = {old_tags, new_tags}
 
     response = client.put_object_tagging(
         Bucket=bucket_name,
