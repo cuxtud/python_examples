@@ -26,10 +26,7 @@ create_bucket(mbname,s3region)
 time.sleep(10)
 
 #Update tags to the bucket created
-#def set_bucket_tags(bucket, **new_tags):
 def set_bucket_tags(bucket):
-   # session = boto3.session.Session(profile_name='default')
-   # client = session.client('s3')
    s3 = boto3.resource('s3')
    bucket_tagging = s3.BucketTagging(bucket)
    response = bucket_tagging.put(
@@ -46,10 +43,6 @@ def set_bucket_tags(bucket):
             ]    
         }
     )
-
-
-#Call the function with key value pairs for tags
-#set_bucket_tags(mbname, key1="value1", key2="value2", key3="value3")
 
 set_bucket_tags(mbname)
 
