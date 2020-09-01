@@ -17,7 +17,7 @@ def create_bucket(bucket_name,bucket_region):
     )
     else:
         s3_client = boto3.client('s3')
-        s3.client.create_bucket(Bucket=bucket_name)
+        s3_client.create_bucket(Bucket=bucket_name)
 
 #create bucket with the name provided when Operational workflow is executed
 create_bucket(mbname,s3region)
