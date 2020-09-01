@@ -55,7 +55,7 @@ def blogging(logboolean):
                                 'URI': 'string'
                             },
                             'Permission': 'FULL_CONTROL'
-                        }
+                        },
                     ],
                     'TargetPrefix': mbname
                 }
