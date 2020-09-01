@@ -40,12 +40,12 @@ def blogging(logboolean):
     if logboolean == 'yes':
         s3 = boto3.client('s3')
         #bucket_logging = s3.BucketLogging(mbname)
-        response = client.put_bucket_logging(
-            Bucket=mbname,
+        response = s3.put_bucket_logging(
+            Bucket=mbname
+            '''
             BucketLoggingStatus={
                 'LoggingEnabled': {
                     'TargetBucket': mbname,
-                    '''
                     'TargetGrants': [
                         {
                             'Grantee': {
@@ -58,10 +58,11 @@ def blogging(logboolean):
                             'Permission': 'FULL_CONTROL'
                         }
                     ],
-                    '''
+                    
                     'TargetPrefix': mbname
                 }
             }
+            '''
         )
     else:
         print('Logging not requested')
