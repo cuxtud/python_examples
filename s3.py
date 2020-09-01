@@ -40,6 +40,7 @@ def blogging(logboolean):
     if logboolean == 'yes':
         s3 = boto3.resource('s3')
         bucket_logging = s3.BucketLogging(mbname)
+        '''
         response = bucket_logging.put(
             BucketLoggingStatus={
                 'LoggingEnabled': {
@@ -60,6 +61,7 @@ def blogging(logboolean):
                 }
             }
         )
+        '''
     else:
         print('Logging not requested')
 
