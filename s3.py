@@ -47,7 +47,7 @@ def set_bucket_tags(bucket):
                     'Value': 'Value 1'
                 },
                 {
-                    'Key 2': 'Key 2'
+                    'Key 2': 'Key 2',
                     'Value': 'Value 2'
                 } 
             ]    
