@@ -26,21 +26,39 @@ create_bucket(mbname,s3region)
 time.sleep(10)
 
 #Update tags to the bucket created
-def set_bucket_tags(bucket, **new_tags):
+#def set_bucket_tags(bucket, **new_tags):
+def set_bucket_tags(bucket):
     session = boto3.session.Session(profile_name='default')
     client = session.client('s3')
     response = client.put_bucket_tagging(
         Bucket=bucket,
+        '''
         Tagging={
             'TagSet': [
                 {'Key': str(k), 'Value': str(v)} 
                 for k, v in new_tags.items()
                 ]
         }
+        '''
+        Tagging={
+            'TagSet': [
+                {
+                    'Key 1': 'Key 1', 
+                    'Value': 'Value 1'
+                },
+                {
+                    'Key 2': 'Key 2'
+                    'Value': 'Value 2'
+                } 
+            ]    
+        }
     )
 
+
 #Call the function with key value pairs for tags
-set_bucket_tags(mbname, 'key 1'="value1", key2="value2", key3="value3")
+#set_bucket_tags(mbname, key1="value1", key2="value2", key3="value3")
+
+set_bucket_tags(mbname)
 
 #Enable versioning
 def bucket_versioning(bucket_name):
