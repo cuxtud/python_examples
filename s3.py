@@ -54,11 +54,11 @@ def blogging(logboolean):
                                 'URI': 'string'
                             },
                             'Permission': 'FULL_CONTROL'
-                        },
+                        }
                     ],
                     'TargetPrefix': 'string'
                 }
-            },
+            }
         )
     else:
         print('Logging not requested')
