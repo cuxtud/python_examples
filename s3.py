@@ -50,7 +50,7 @@ def set_bucket_tags(bucket, update=True, **new_tags):
             print(e)
             print("There was no tag")
 
-    new_tags = {**old_tags, **new_tags}
+    #new_tags = {**old_tags, **new_tags}
 
     response = client.put_bucket_tagging(
         Bucket=bucket,
