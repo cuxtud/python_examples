@@ -28,10 +28,11 @@ time.sleep(10)
 #Update tags to the bucket created
 #def set_bucket_tags(bucket, **new_tags):
 def set_bucket_tags(bucket):
-    session = boto3.session.Session(profile_name='default')
-    client = session.client('s3')
-    response = client.put_bucket_tagging(
-        Bucket=bucket,
+   # session = boto3.session.Session(profile_name='default')
+   # client = session.client('s3')
+   s3 = boto3.resource('s3')
+   bucket_tagging = s3.BucketTagging(bucket)
+   response = bucket_tagging.put(
         '''
         Tagging={
             'TagSet': [
