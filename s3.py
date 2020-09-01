@@ -15,12 +15,13 @@ def create_bucket(bucket_name,bucket_region):
     )
 
 #create bucket with the name provided when Operational workflow is executed
-#create_bucket(mbname,s3region)
+create_bucket(mbname,s3region)
 
 #Sleep for 10secs for the bucket to be created
-time.sleep(10)
+#time.sleep(10)
 
 #Get the tags and then set them on the new bucket
+'''
 s3 = boto3.resource('s3')
 bucket_tagging = s3.BucketTagging(mbname)
 Set_tag = bucket_tagging.put(
@@ -33,6 +34,7 @@ Set_tag = bucket_tagging.put(
         ]
     }
 )
+'''
 
 flogvalue=morpheus['customOptions']['flogvalue']
 
