@@ -43,9 +43,7 @@ set_bucket_tags(mbname, key1="value1", key2="value2", key3="value3")
 def bucket_versioning(bucket_name):
     s3 = boto3.resource('s3')
     bucket_versioning = s3.BucketVersioning(bucket_name)
-    response = bucket_versioning.put(
-        Status='Enabled'
-    )
+    bucket_versioning.configure_versioning(True)
     
 
 bucket_versioning(mbname)
