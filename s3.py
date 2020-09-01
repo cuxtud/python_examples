@@ -2,19 +2,19 @@ import boto3
 import time
 
 mbname=morpheus['customOptions']['fbname']
+s3region=morpheus['customOptions']['fregion']
 
-
-def create_bucket(bucket_name):
+def create_bucket(bucket_name,bucket_region):
     s3_client = boto3.client('s3')
     s3_client.create_bucket(
         Bucket=bucket_name,
         CreateBucketConfiguration={
-            'LocationConstraint': 'eu-west-1'
+            'LocationConstraint': bucket_region
         }
     )
 
 #create bucket with the name provided when Operational workflow is executed
-create_bucket(mbname)
+create_bucket(mbname,s3region)
 
 #Sleep for 10secs for the bucket to be created
 time.sleep(10)
@@ -64,4 +64,4 @@ def blogging(logboolean):
     else:
         print('Logging not requested')
 
-blogging(flogvalue)
+#blogging(flogvalue)
