@@ -45,9 +45,18 @@ def blogging(logboolean):
             BucketLoggingStatus={
                 'LoggingEnabled': {
                     'TargetBucket': mbname,
-                    'TargetGrants':[{
-                        'Permission': 'FULL_CONTROL'
-                    }],
+                    'TargetGrants': [
+                        {
+                            'Grantee': {
+                                'DisplayName': 'cuxtud',
+                                'EmailAddress': 'vjanish1984@gmail.com',
+                                'ID': '23',
+                                'Type': 'AmazonCustomerByEmail',
+                                'URI': 'string'
+                            },
+                            'Permission': 'FULL_CONTROL'
+                        }
+                    ],
                     'TargetPrefix': mbname
                 }
             }
