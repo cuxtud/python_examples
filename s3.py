@@ -7,12 +7,15 @@ print(s3region)
 
 def create_bucket(bucket_name,bucket_region):
     s3_client = boto3.client('s3')
-    s3_client.create_bucket(
+    if bucket_region == 'eu-west-1':
+        s3_client.create_bucket(
         Bucket=bucket_name,
         CreateBucketConfiguration={
             'LocationConstraint': bucket_region
         }
     )
+    else:
+        s3.client.create_bucket(Bucket=bucket_name)
 
 #create bucket with the name provided when Operational workflow is executed
 create_bucket(mbname,s3region)
