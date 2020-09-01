@@ -45,6 +45,9 @@ def blogging(logboolean):
             BucketLoggingStatus={
                 'LoggingEnabled': {
                     'TargetBucket': mbname,
+                    'TargetGrants':[
+                        'Permission': 'FULL_CONTROL'|'READ'|'WRITE'
+                    ],
                     'TargetPrefix': mbname
                 }
             }
