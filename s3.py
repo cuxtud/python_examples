@@ -3,6 +3,7 @@ import time
 
 mbname=morpheus['customOptions']['fbname']
 s3region=morpheus['customOptions']['fregion']
+print(s3region)
 
 def create_bucket(bucket_name,bucket_region):
     s3_client = boto3.client('s3')
@@ -14,7 +15,7 @@ def create_bucket(bucket_name,bucket_region):
     )
 
 #create bucket with the name provided when Operational workflow is executed
-create_bucket(mbname,s3region)
+#create_bucket(mbname,s3region)
 
 #Sleep for 10secs for the bucket to be created
 time.sleep(10)
