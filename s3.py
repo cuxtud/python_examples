@@ -41,7 +41,12 @@ def blogging(logboolean):
         s3 = boto3.client('s3')
         #bucket_logging = s3.BucketLogging(mbname)
         response = s3.put_bucket_logging(
-            Bucket=mbname
+            Bucket=mbname,
+            BucketLoggingStatus={
+                'LoggingEnabled': {
+                    'TargetBucket': mbname
+                }
+            }
         )
     else:
         print('Logging not requested')
