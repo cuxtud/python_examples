@@ -1,6 +1,7 @@
 import boto3
 import time
 
+#Setting user inputs as global vars
 mbname=morpheus['customOptions']['fbname']
 s3region=morpheus['customOptions']['fregion']
 
