@@ -18,7 +18,7 @@ def create_bucket(bucket_name,bucket_region):
 create_bucket(mbname,s3region)
 
 #Sleep for 10secs for the bucket to be created
-#time.sleep(10)
+time.sleep(10)
 
 #Get the tags and then set them on the new bucket
 '''
