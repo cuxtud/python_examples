@@ -36,6 +36,33 @@ Set_tag = bucket_tagging.put(
 )
 '''
 
+session = boto3.session.Session(profile_name='default')
+client = session.client('s3', 'ap-southeast-2')
+
+def set_bucket_tags(bucket, update=True, **new_tags):
+    old_tags = {}
+
+    if update:
+        try:
+            old = client.get_bucket_tagging(Bucket=bucket)
+            old_tags = {i['Key']: i['Value'] for i in old['TagSet']}
+        except Exception as e:
+            print(e)
+            print("There was no tag")
+
+    new_tags = {**old_tags, **new_tags}
+
+    response = client.put_bucket_tagging(
+        Bucket=bucket,
+        Tagging={
+            'TagSet': [{'Key': str(k), 'Value': str(v)} for k, v in new_tags.items()]
+        }
+    )
+
+    print(response)
+
+set_bucket_tags(mbname, True, key1="value1", key2="value2", key3="value3")
+
 flogvalue=morpheus['customOptions']['flogvalue']
 
 #Setup Logging
