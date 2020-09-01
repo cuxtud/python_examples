@@ -40,7 +40,7 @@ def set_bucket_tags(bucket, **new_tags):
     )
 
 #Call the function with key value pairs for tags
-set_bucket_tags(mbname, key 1="value1", key2="value2", key3="value3")
+set_bucket_tags(mbname, 'key 1'="value1", key2="value2", key3="value3")
 
 #Enable versioning
 def bucket_versioning(bucket_name):
