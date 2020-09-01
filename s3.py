@@ -46,7 +46,8 @@ def bucket_versioning(bucket_name):
     response = bucket_versioning.enable()
     
 #Check if versioning is required
-if fbversion == 'Yes':
+fbversion=morpheus['customOptions']['fbversion'] 
+if fbversion == 'yes':
     bucket_versioning(mbname)
 else:
     print('Versioning is not enabled')
