@@ -36,11 +36,11 @@ def set_bucket_tags(bucket):
         Tagging = {
             'TagSet': [
                 {
-                    'Key 1': 'Key 1', 
+                    'Key': 'Key 1', 
                     'Value': 'Value 1'
                 },
                 {
-                    'Key 2': 'Key 2',
+                    'Key': 'Key 2',
                     'Value': 'Value 2'
                 } 
             ]    
