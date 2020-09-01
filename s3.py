@@ -24,7 +24,8 @@ create_bucket(mbname,s3region)
 #Sleep for 10secs for the bucket to be created
 time.sleep(10)
 
-def set_bucket_tags(bucket, update=True, **new_tags):
+#Update tags to the bucket created
+def set_bucket_tags(bucket, **new_tags):
     session = boto3.session.Session(profile_name='default')
     client = session.client('s3')
     response = client.put_bucket_tagging(
@@ -34,7 +35,8 @@ def set_bucket_tags(bucket, update=True, **new_tags):
         }
     )
 
-set_bucket_tags(mbname, True, key1="value1", key2="value2", key3="value3")
+#Call the function with key value pairs for tags
+set_bucket_tags(mbname, key1="value1", key2="value2", key3="value3")
 
 flogvalue=morpheus['customOptions']['flogvalue']
 
