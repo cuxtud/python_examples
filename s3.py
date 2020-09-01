@@ -35,19 +35,15 @@ Set_tag = bucket_tagging.put(
     }
 )
 '''
-
-session = boto3.session.Session(profile_name='default')
-client = session.client('s3', 'ap-southeast-2')
-
 def set_bucket_tags(bucket, update=True, **new_tags):
+    session = boto3.session.Session(profile_name='default')
+    client = session.client('s3')
     response = client.put_bucket_tagging(
         Bucket=bucket,
         Tagging={
             'TagSet': [{'Key': str(k), 'Value': str(v)} for k, v in new_tags.items()]
         }
     )
-
-    print(response)
 
 set_bucket_tags(mbname, True, key1="value1", key2="value2", key3="value3")
 
