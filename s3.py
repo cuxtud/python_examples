@@ -38,7 +38,7 @@ flogvalue=morpheus['customOptions']['flogvalue']
 #Setup Logging
 def blogging(logboolean):
     if logboolean == 'yes':
-        s3 = boto3.resource('s3')
+        s3 = boto3.client('s3')
         #bucket_logging = s3.BucketLogging(mbname)
         response = s3.put_bucket_logging(
             Bucket=mbname
