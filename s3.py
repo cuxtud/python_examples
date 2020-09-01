@@ -33,15 +33,7 @@ def set_bucket_tags(bucket):
    s3 = boto3.resource('s3')
    bucket_tagging = s3.BucketTagging(bucket)
    response = bucket_tagging.put(
-        '''
-        Tagging={
-            'TagSet': [
-                {'Key': str(k), 'Value': str(v)} 
-                for k, v in new_tags.items()
-                ]
-        }
-        '''
-        Tagging={
+        Tagging = {
             'TagSet': [
                 {
                     'Key 1': 'Key 1', 
