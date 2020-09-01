@@ -38,13 +38,14 @@ flogvalue=morpheus['customOptions']['flogvalue']
 #Setup Logging
 def blogging(logboolean):
     if logboolean == 'yes':
-        s3 = boto3.resource('s3')
-        bucket_logging = s3.BucketLogging(mbname)
-        '''
-        response = bucket_logging.put(
+        s3 = boto3.client('s3')
+        #bucket_logging = s3.BucketLogging(mbname)
+        response = client.put_bucket_logging(
+            Bucket=mbname,
             BucketLoggingStatus={
                 'LoggingEnabled': {
                     'TargetBucket': mbname,
+                    '''
                     'TargetGrants': [
                         {
                             'Grantee': {
@@ -57,11 +58,11 @@ def blogging(logboolean):
                             'Permission': 'FULL_CONTROL'
                         }
                     ],
-                    'TargetPrefix': 'string'
+                    '''
+                    'TargetPrefix': mbname
                 }
             }
         )
-        '''
     else:
         print('Logging not requested')
 
