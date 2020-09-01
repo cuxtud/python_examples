@@ -3,7 +3,6 @@ import time
 
 mbname=morpheus['customOptions']['fbname']
 s3region=morpheus['customOptions']['fregion']
-print(s3region)
 
 def create_bucket(bucket_name,bucket_region):
     s3_client = boto3.client('s3')
@@ -25,21 +24,6 @@ create_bucket(mbname,s3region)
 #Sleep for 10secs for the bucket to be created
 time.sleep(10)
 
-#Get the tags and then set them on the new bucket
-'''
-s3 = boto3.resource('s3')
-bucket_tagging = s3.BucketTagging(mbname)
-Set_tag = bucket_tagging.put(
-    Tagging={
-        'TagSet' :[
-            {
-                'Key':'Key1',
-                'Value':'Value1'
-            },
-        ]
-    }
-)
-'''
 def set_bucket_tags(bucket, update=True, **new_tags):
     session = boto3.session.Session(profile_name='default')
     client = session.client('s3')
