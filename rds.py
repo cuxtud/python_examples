@@ -10,7 +10,7 @@ DB_USER_PASSWORD = 'db_pass123'
 # Create DB instance
 client = boto3.client('rds')
 respone = client.create_db_instance(
-    DBName='anishdbtest01',
+    DBName=null,
     DBInstanceIdentifier='anisdbinstance',
     AllocatedStorage=100,
     DBInstanceClass='db.t3.small',
