@@ -1,4 +1,5 @@
 import boto3
+import datetime
 
 ENGINE_NAME = 'mysql'
 ENGINE_VERSION = '5.7.00'
@@ -76,7 +77,7 @@ respone = client.create_db_instance(
 )
 
 # check Create DB instance returned successfully
-if response['ResponseMetadata']['HTTPStatusCode'] == 200:
-    print("Successfully create DB instance")
-else:
-    print("Couldn't create DB instance")
+#if response['ResponseMetadata']['HTTPStatusCode'] == 200:
+#    print("Successfully create DB instance")
+#else:
+#    print("Couldn't create DB instance")
