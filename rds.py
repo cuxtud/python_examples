@@ -61,17 +61,15 @@ respone = client.create_db_instance(
     #EnablePerformanceInsights=True|False,
     #PerformanceInsightsKMSKeyId='string',
     #PerformanceInsightsRetentionPeriod=123,
-    '''
-    EnableCloudwatchLogsExports=[
-        'string',
-    ],
-    ProcessorFeatures=[
-        {
-            'Name': 'string',
-            'Value': 'string'
-        },
-    ]
-    '''
+    #EnableCloudwatchLogsExports=[
+    #    'string',
+    #],
+    #ProcessorFeatures=[
+    #    {
+    #        'Name': 'string',
+    #        'Value': 'string'
+    #    },
+    #]
     #DeletionProtection=True|False,
     #MaxAllocatedStorage=123
 )
