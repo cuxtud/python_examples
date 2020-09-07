@@ -17,7 +17,8 @@ respone = client.create_db_instance(
     Engine='sqlserver-ex',
     MasterUsername='anishadmin',
     MasterUserPassword='anis1sgpas23fh654',
-    DBParameterGroupName='default.sqlserver-ex-13.0',
+    #DBParameterGroupFamily='string',
+    DBParameterGroupName='default.sqlserver-ex-12.0',
     #DBSecurityGroups=[
     #    'default',
     #],
