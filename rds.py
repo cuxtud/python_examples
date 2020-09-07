@@ -18,12 +18,12 @@ respone = client.create_db_instance(
     MasterUsername='anishadmin',
     MasterUserPassword='anis1sgpas23fh654',
     DBParameterGroupName='default.sqlserver-ex-13.0',
-    DBSecurityGroups=[
-        'default',
-    ],
-    VpcSecurityGroupIds=[
-        'sg-f90f86bd',
-    ],
+    #DBSecurityGroups=[
+    #    'default',
+    #],
+    #VpcSecurityGroupIds=[
+    #    'sg-f90f86bd',
+    #],
     #AvailabilityZone='string',
     DBSubnetGroupName='db_mysql_aurora',
     #PreferredMaintenanceWindow='string',
