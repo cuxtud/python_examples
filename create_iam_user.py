@@ -8,6 +8,7 @@ def create_iam_User():
     user = user.create(
     #Path='string',
     PermissionsBoundary='arn:aws:iam::370459551696:policy/Morpheus-S3',
+    user_name = 'anishtest',
     Tags=[
         {
             'Key': 'Key 1',
