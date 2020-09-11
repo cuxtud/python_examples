@@ -23,6 +23,13 @@ def addto_group(usernameaa):
     user = user.add_group(
     GroupName='Morpheus'
 )
+def create_keys(usernameaa):
+    iam = boto3.client('iam')
+    response = iam.create_access_key(UserName=usernameaa)
+    return response
 
 create_iam_User('anishtest1')
 addto_group('anishtest1')
+create_keys('anishtest1')
+
+print(response)
