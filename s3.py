@@ -4,6 +4,7 @@ import time
 #Setting user inputs as global vars
 mbname=morpheus['customOptions']['fbname']
 s3region=morpheus['customOptions']['fregion']
+user1=morpheus['customOptions']['fnoofusers']
 
 def create_bucket(bucket_name,bucket_region):
     s3_client = boto3.client('s3')
@@ -92,3 +93,46 @@ def blogging(logboolean):
         print('Logging not requested')
 
 #blogging(flogvalue)
+
+#Create IAM User
+
+def create_iam_User(usernameaa):
+    iam = boto3.resource('iam')
+    user = iam.User(usernameaa)
+    user = user.create(
+    PermissionsBoundary='arn:aws:iam::370459551696:policy/Morpheus-S3',
+    UserName = usernameaa,
+    Tags=[
+        {
+            'Key': 'Key 1',
+            'Value': 'Value 1'
+        },
+    ]
+)
+
+#Add user to the group
+
+def addto_group(usernameaa):
+    iam = boto3.resource('iam')
+    user = iam.User(usernameaa)
+    user = user.add_group(
+    GroupName='Morpheus'
+)
+
+#create access and secret keys for the user
+def create_keys(usernameaa):
+    iam = boto3.client('iam')
+    response = iam.create_access_key(UserName=usernameaa)
+    print (response)
+
+if user1 == '2':
+    create_iam_User('anishtest1')
+    addto_group('anishtest1')
+    create_keys('anishtest1')
+    create_iam_User('anishtest2')
+    addto_group('anishtest2')
+    create_keys('anishtest2')
+else:
+    create_iam_User('anishtest1')
+    addto_group('anishtest1')
+    create_keys('anishtest1')
