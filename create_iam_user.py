@@ -18,4 +18,12 @@ def create_iam_User(usernameaa):
     ]
 )
 
+def addto_group(usernameaa):
+    iam = boto3.resource('iam')
+    user = iam.User(usernameaa)
+    user = user.add_group(
+    GroupName='Morpheus'
+)
+
 create_iam_User('anishtest1')
+addto_group('anishtest1')
