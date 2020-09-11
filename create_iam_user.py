@@ -9,7 +9,6 @@ def create_iam_User(usernameaa):
     #Path='string',
     PermissionsBoundary='arn:aws:iam::370459551696:policy/Morpheus-S3',
     UserName = usernameaa,
-    GroupName= 'Morpheus',
     Tags=[
         {
             'Key': 'Key 1',
