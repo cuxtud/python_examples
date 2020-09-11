@@ -1,5 +1,7 @@
 import boto3
 
+user1=morpheus['customOptions']['fnoofusers']
+
 #Create IAM User
 
 def create_iam_User(usernameaa):
@@ -34,4 +36,3 @@ def create_keys(usernameaa):
 create_iam_User('anishtest1')
 addto_group('anishtest1')
 create_keys('anishtest1')
-
