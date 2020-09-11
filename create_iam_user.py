@@ -9,6 +9,7 @@ def create_iam_User(usernameaa):
     #Path='string',
     PermissionsBoundary='arn:aws:iam::370459551696:policy/Morpheus-S3',
     UserName = usernameaa,
+    GroupName= 'Morpheus',
     Tags=[
         {
             'Key': 'Key 1',
@@ -17,4 +18,4 @@ def create_iam_User(usernameaa):
     ]
 )
 
-create_iam_User('anishtest')
+create_iam_User('anishtest1')
