@@ -93,3 +93,21 @@ def blogging(logboolean):
         print('Logging not requested')
 
 #blogging(flogvalue)
+
+# set encryption
+def default_encryption(bucketname):
+    encrypt = boto3.client('s3')
+    response = encrypt.put_bucket_encryption(
+        Bucket=bucketname,
+        ServerSideEncryptionConfiguration={
+            'Rules': [
+                {
+                    'ApplyServerSideEncryptionByDefault': {
+                        'SSEAlgorithm': 'AES256'
+                    }
+                },
+            ]
+        },
+    )
+
+default_encryption(mbname)
