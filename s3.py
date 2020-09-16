@@ -4,7 +4,7 @@ import time
 #Setting user inputs as global vars
 mbname=morpheus['customOptions']['fbname']
 s3region=morpheus['customOptions']['fregion']
-user1=morpheus['customOptions']['fnoofusers']
+#user1=morpheus['customOptions']['fnoofusers']
 
 def create_bucket(bucket_name,bucket_region):
     s3_client = boto3.client('s3')
