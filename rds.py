@@ -8,7 +8,7 @@ DB_NAME = 'mysql_db'
 DB_USER_NAME = 'db_user1'
 DB_USER_PASSWORD = 'db_pass123'
 
-# Create DB instance
+# Create SQL Server DB instance
 client = boto3.client('rds')
 respone = client.create_db_instance(
     DBName='',
