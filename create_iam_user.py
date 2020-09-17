@@ -43,6 +43,8 @@ def create_key(user_name):
     :param user_name: The name of the user.
     :return: The created access key.
     """
+    logger = logging.getLogger(__name__)
+    iam = boto3.resource('iam')
     try:
         key_pair = iam.User(user_name).create_access_key_pair()
         logger.info(
