@@ -32,12 +32,15 @@ def addto_group(usernameaa):
 def create_keys(usernameaa):
     iam = boto3.client('iam')
     response = iam.create_access_key(UserName=usernameaa)
-    print "check if this prints"
-    print (response)
+
 
 create_iam_User('anishtest1')
 addto_group('anishtest1')
-create_keys('anishtest1')
+
+iam = boto3.client('iam')
+response = iam.create_access_key(UserName='anishtest1')
+print(response)
+#create_keys('anishtest1')
 
 #Create bucket policy for the 2 users
 
