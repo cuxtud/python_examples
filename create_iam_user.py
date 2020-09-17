@@ -4,7 +4,8 @@ import requests
 from botocore.exceptions import ClientError
 
 #mbname=morpheus['customOptions']['fbname']
-#user1=morpheus['customOptions']['fnoofusers']
+user1=morpheus['customOptions']['fnoofusers']
+print user1
 
 #Create IAM User
 
@@ -61,6 +62,12 @@ create_iam_User('anishtest3')
 addto_group('anishtest3')
 keys = create_key('anishtest3')
 print(keys)
+
+if user1 == '2':
+    create_iam_User('anishtest3')
+    addto_group('anishtest3')
+    keys2 = create_key('anishtest3')
+    print(keys2)
 
 #Create bucket policy for the 2 users
 
