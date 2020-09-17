@@ -4,8 +4,8 @@ import requests
 from botocore.exceptions import ClientError
 
 #mbname=morpheus['customOptions']['fbname']
-#user1=morpheus['customOptions']['fnoofusers']
-#print (user1)
+user1=morpheus['customOptions']['fnoofusers']
+print(user1)
 
 #Create IAM User
 
@@ -57,7 +57,7 @@ def create_key(user_name):
         raise
     else:
         return key_pair
-
+"""
 create_iam_User('anishtest3')
 addto_group('anishtest3')
 keys = create_key('anishtest3')
@@ -68,7 +68,7 @@ addto_group('anishtest4')
 keysa = create_key('anishtest4')
 print(keysa)
 
-"""
+
 if user1 == '2':
     create_iam_User('anishtest4')
     addto_group('anishtest4')
