@@ -55,12 +55,13 @@ def create_key(user_name):
         raise
     else:
         return key_pair
-        print(key_pair)
 
 create_iam_User('anishtest3')
 addto_group('anishtest3')
 keys = create_key('anishtest3')
-print(keys)
+jsonkeys = keys.json()
+print(jsonkeys)
+
 
 #Create bucket policy for the 2 users
 
