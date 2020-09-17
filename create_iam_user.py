@@ -55,6 +55,7 @@ def create_key(user_name):
         raise
     else:
         return key_pair
+        print(key_pair)
 
 create_iam_User('anishtest1')
 addto_group('anishtest1')
