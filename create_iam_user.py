@@ -1,4 +1,6 @@
 import boto3
+import logging
+from botocore.exceptions import ClientError
 
 mbname=morpheus['customOptions']['fbname']
 user1=morpheus['customOptions']['fnoofusers']
@@ -29,18 +31,32 @@ def addto_group(usernameaa):
 )
 
 #create access and secret keys for the user
-def create_keys(usernameaa):
-    iam = boto3.client('iam')
-    response = iam.create_access_key(UserName=usernameaa)
+#def create_keys(usernameaa):
+#    iam = boto3.client('iam')
+#    response = iam.create_access_key(UserName=usernameaa)
 
+
+def create_key(user_name):
+    """
+    Creates an access key for the specified user. Each user can have a
+    maximum of two keys.
+    :param user_name: The name of the user.
+    :return: The created access key.
+    """
+    try:
+        key_pair = iam.User(user_name).create_access_key_pair()
+        logger.info(
+            "Created access key pair for %s. Key ID is %s.",
+            key_pair.user_name, key_pair.id)
+    except ClientError:
+        logger.exception("Couldn't create access key pair for %s.", user_name)
+        raise
+    else:
+        return key_pair
 
 create_iam_User('anishtest1')
 addto_group('anishtest1')
-
-iam = boto3.client('iam')
-response = iam.create_access_key(UserName='anishtest1')
-print(response)
-#create_keys('anishtest1')
+create_key('anishtest1')
 
 #Create bucket policy for the 2 users
 
