@@ -50,15 +50,15 @@ def create_key(user_name):
     :param user_name: The name of the user.
     :return: The created access key.
     """
-    logger = logging.getLogger(__name__)
+    #logger = logging.getLogger(__name__)
     iam = boto3.resource('iam')
     try:
         key_pair = iam.User(user_name).create_access_key_pair()
-        logger.debug(
-            "Created access key pair for %s. Key ID is %s.",
-            key_pair.user_name, key_pair.id)
+     #   logger.debug(
+      #      "Created access key pair for %s. Key ID is %s.",
+      #      key_pair.user_name, key_pair.id)
     except ClientError:
-        logger.exception("Couldn't create access key pair for %s.", user_name)
+       # logger.exception("Couldn't create access key pair for %s.", user_name)
         raise
     else:
         return key_pair
