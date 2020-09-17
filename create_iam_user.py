@@ -71,7 +71,7 @@ print(keys)
 if user1 == "Two":
     create_iam_User('anishtest4')
     addto_group('anishtest4')
-    keys2 = create_key('anishtest')
+    keys2 = create_key('anishtest4')
     print(keys2)
 
 
