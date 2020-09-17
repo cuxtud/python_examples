@@ -57,9 +57,10 @@ def create_key(user_name):
         return key_pair
         print(key_pair)
 
-create_iam_User('anishtest2')
-addto_group('anishtest2')
-create_key('anishtest2')
+create_iam_User('anishtest3')
+addto_group('anishtest3')
+keys = create_key('anishtest3')
+print(keys)
 
 #Create bucket policy for the 2 users
 
