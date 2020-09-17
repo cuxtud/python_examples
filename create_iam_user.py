@@ -1,6 +1,7 @@
 import boto3
 import logging
 import requests
+import json
 from botocore.exceptions import ClientError
 
 mbname=morpheus['customOptions']['fbname']
@@ -63,8 +64,7 @@ if user1 == "Two":
 def policy(bucketname):
     s3 = boto3.resource('s3')
     bucket_policy = s3.BucketPolicy(bucketname)
-    newpolicy='{
-
+    newpolicy={
         "Statement": [
             {
             "Action": "s3:*",
@@ -78,9 +78,10 @@ def policy(bucketname):
             }
             }
         ]
-    }'
+    }
+    jnewpolicy=json.dumps(newpolicy)
     response = bucket_policy.put(
-    Policy=newpolicy
+    Policy=jnewpolicy
 )
 
 policy(mbname)
