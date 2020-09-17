@@ -62,24 +62,18 @@ def create_key(user_name):
         raise
     else:
         return key_pair
-"""
+
 create_iam_User('anishtest3')
 addto_group('anishtest3')
 keys = create_key('anishtest3')
 print(keys)
 
-create_iam_User('anishtest4')
-addto_group('anishtest4')
-keysa = create_key('anishtest4')
-print(keysa)
-
-
-if user1 == '2':
+if user1 == "Two":
     create_iam_User('anishtest4')
     addto_group('anishtest4')
     keys2 = create_key('anishtest')
     print(keys2)
-    """
+
 
 #Create bucket policy for the 2 users
 
