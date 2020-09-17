@@ -2,8 +2,8 @@ import boto3
 import logging
 from botocore.exceptions import ClientError
 
-mbname=morpheus['customOptions']['fbname']
-user1=morpheus['customOptions']['fnoofusers']
+#mbname=morpheus['customOptions']['fbname']
+#user1=morpheus['customOptions']['fnoofusers']
 
 #Create IAM User
 
@@ -47,7 +47,7 @@ def create_key(user_name):
     iam = boto3.resource('iam')
     try:
         key_pair = iam.User(user_name).create_access_key_pair()
-        logger.info(
+        logger.debug(
             "Created access key pair for %s. Key ID is %s.",
             key_pair.user_name, key_pair.id)
     except ClientError:
