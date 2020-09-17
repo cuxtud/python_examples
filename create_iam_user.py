@@ -63,6 +63,11 @@ addto_group('anishtest3')
 keys = create_key('anishtest3')
 print(keys)
 
+create_iam_User('anishtest4')
+addto_group('anishtest4')
+keysa = create_key('anishtest4')
+print(keysa)
+
 """
 if user1 == '2':
     create_iam_User('anishtest4')
