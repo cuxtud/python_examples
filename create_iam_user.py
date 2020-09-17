@@ -2,6 +2,11 @@ import boto3
 import logging
 import requests
 from botocore.exceptions import ClientError
+import smtplib 
+from email.mime.multipart import MIMEMultipart 
+from email.mime.text import MIMEText 
+from email.mime.base import MIMEBase 
+from email import encoders 
 
 #mbname=morpheus['customOptions']['fbname']
 #user1=morpheus['customOptions']['fnoofusers']
@@ -61,22 +66,6 @@ create_iam_User('anishtest3')
 addto_group('anishtest3')
 keys = create_key('anishtest3')
 print(keys)
-
-def send_mail(keypair):
-    fromaddr = "info@morpheusdata.com"
-    toaddr = "aabraham@morpheusdata.com"
-    
-    msg = MIMEMultipart()   
-    msg['From'] = fromaddr 
-    msg['To'] = toaddr  
-    msg['Subject'] = "Key pairs"
-    body = keypair
-    s = smtplib.SMTP('127.0.0.1', 25) 
-    text = msg.as_string() 
-    s.sendmail(fromaddr, toaddr, text) 
-    s.quit() 
-
-send_mail(keys)
 
 #Create bucket policy for the 2 users
 
