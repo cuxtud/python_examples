@@ -60,9 +60,23 @@ def create_key(user_name):
 create_iam_User('anishtest3')
 addto_group('anishtest3')
 keys = create_key('anishtest3')
-jsonkeys = keys.json()
-print(jsonkeys)
+print(keys)
 
+def send_mail(keypair):
+    fromaddr = "info@morpheusdata.com"
+    toaddr = "aabraham@morpheusdata.com"
+    
+    msg = MIMEMultipart()   
+    msg['From'] = fromaddr 
+    msg['To'] = toaddr  
+    msg['Subject'] = "Key pairs"
+    body = keypair
+    s = smtplib.SMTP('127.0.0.1', 25) 
+    text = msg.as_string() 
+    s.sendmail(fromaddr, toaddr, text) 
+    s.quit() 
+
+send_mail(keys)
 
 #Create bucket policy for the 2 users
 
