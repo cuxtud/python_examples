@@ -4,8 +4,8 @@ import requests
 from botocore.exceptions import ClientError
 
 #mbname=morpheus['customOptions']['fbname']
-user1=morpheus['customOptions']['fnoofusers']
-print (user1)
+#user1=morpheus['customOptions']['fnoofusers']
+#print (user1)
 
 #Create IAM User
 
