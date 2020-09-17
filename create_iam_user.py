@@ -3,7 +3,7 @@ import logging
 import requests
 from botocore.exceptions import ClientError
 
-#mbname=morpheus['customOptions']['fbname']
+mbname=morpheus['customOptions']['fbname']
 user1=morpheus['customOptions']['fnoofusers']
 
 #Create IAM User
@@ -82,3 +82,5 @@ def policy(bucketname):
     response = bucket_policy.put(
     Policy=newpolicy
 )
+
+policy(mbname)
