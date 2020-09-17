@@ -7,6 +7,11 @@ from botocore.exceptions import ClientError
 user1=morpheus['customOptions']['fnoofusers']
 print(user1)
 
+if user1 == "Two":
+    print ("This was the issue")
+else:
+    print ("Still unknown")
+
 #Create IAM User
 
 def create_iam_User(usernameaa):
