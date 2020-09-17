@@ -63,8 +63,22 @@ if user1 == "Two":
 def policy(bucketname):
     s3 = boto3.resource('s3')
     bucket_policy = s3.BucketPolicy(bucketname)
+    newpolicy='{
+
+        "Statement": [
+            {
+            "Action": "s3:*",
+            "Effect": "Allow",
+            "Resource": "arn:aws:s3::: anishtest03/anishtest",
+            "Principal": {
+                "AWS": [
+                "anishtest3",
+                "anishtest4"
+                ]
+            }
+            }
+        ]
+    }'
     response = bucket_policy.put(
-    ConfirmRemoveSelfBucketAccess=True,
-    Policy='string',
-    ExpectedBucketOwner='string'
+    Policy=newpolicy
 )
