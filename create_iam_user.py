@@ -72,8 +72,8 @@ def policy(bucketname):
             "Resource": "arn:aws:s3:::anishtest03/anishtest",
             "Principal": {
                 "AWS": [
-                "anishtest3",
-                "anishtest4"
+                "arn:aws:iam::370459551696:user/anishtest3",
+                "arn:aws:iam::370459551696:user/anishtest4"
                 ]
             }
             }
