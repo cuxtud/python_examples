@@ -69,7 +69,7 @@ def policy(bucketname):
             {
             "Action": "s3:*",
             "Effect": "Allow",
-            "Resource": "arn:aws:s3:::anishtest03/anishtest",
+            "Resource": "arn:aws:s3:::anishtest03",
             "Principal": {
                 "AWS": [
                 "arn:aws:iam::370459551696:user/anishtest3",
