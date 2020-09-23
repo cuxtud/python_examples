@@ -83,5 +83,5 @@ def policy(bucketname):
     response = bucket_policy.put(
     Policy=jnewpolicy
 )
-
+time.sleep(20)
 policy(mbname)
