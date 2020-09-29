@@ -1,4 +1,3 @@
-import morpheus-cypher
 from morpheuscypher import Cypher
 import os
 import sys
