@@ -8,7 +8,8 @@ def token():
     body = {'username': 'admin', 'password': '69F49!632b13e'}
     response = requests.post(tokenurl, headers=tokenheader, data=body, verify=False)
     data = response.json()
-    return data
+    access_token = data['access_token']
+    return access_token
 
 
 print(token())
