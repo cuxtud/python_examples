@@ -20,3 +20,5 @@ def setup(mip):
     response = requests.post(morpheusurl, headers=headers, data=b)
     data = response.json()
     return data
+
+setup(ip)
