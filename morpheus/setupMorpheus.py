@@ -14,9 +14,9 @@ smorpheusurl="https://%s/api/setup/init" % (strip)
 nmorpheusurl=str(smorpheusurl)
 def setup():
     morpheusurl=nmorpheusurl
-    body={ "applianceName": "myenterprise-morpheus", "applianceUrl": aurl, "accountName": "Morpheus", "username": "admin", "password": "69f49632b13e", "email": emailid, "firstName": firstname }
+    body={ "applianceName": "myenterprise-morpheus", "applianceUrl": aurl, "accountName": "Morpheus", "username": "admin", "password": "69f49632b13e", "email": "aabraham@morpheusdata.com", "firstName": firstname }
     b = json.dumps(body)
-    response = requests.post(morpheusurl, headers=headers, data=b)
+    response = requests.post(morpheusurl, headers=headers, data=b, verify=False)
     data = response.json()
     return data
 
