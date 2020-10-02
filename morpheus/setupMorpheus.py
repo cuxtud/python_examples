@@ -9,10 +9,10 @@ url="https://%s" % (strip)
 nemailid=morpheus['customOptions']['fmoremailid']
 emailid=str(nemailid)
 firstname=morpheus['customOptions']['ffirstname']
-morpheusurl="https://%s/api/setup/init" % (strip)
+nmorpheusurl="https://%s/api/setup/init" % (strip)
 print(morpheusurl)
 def setup():
-    morpheusurl=morpheusurl
+    morpheusurl=nmorpheusurl
     body={ "applianceName": "myenterprise-morpheus", "applianceUrl": url, "accountName": "Morpheus", "username": "admin", "password": "69f49632b13e", "email": emailid, "firstName": firstname }
     b = json.dumps(body)
     response = requests.post(morpheusurl, headers=headers, data=b)
