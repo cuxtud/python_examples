@@ -11,4 +11,5 @@ def token():
     return data
     print(data)
 
-token()
+
+print(token())
