@@ -12,6 +12,5 @@ def token():
     return access_token
 
 
-#print(token())
 access_token=token()
 print(access_token)
