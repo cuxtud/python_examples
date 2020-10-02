@@ -7,7 +7,8 @@ tokenheader={'Content-Type': 'application/x-www-form-urlencoded'}
 def token():
     body = 'username=admin&password=69F49!632b13e'
     response = requests.post(tokenurl, headers=tokenheader, data=body, verify=False)
-    return response
-    print(response)
+    data = response.json()
+    return data
+    print(data)
 
 token()
