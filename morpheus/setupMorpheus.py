@@ -2,7 +2,7 @@ import requests
 import json
 
 headers="Content-Type: application/json"
-ip=str(morpheus['instance']['externapip'])
+ip=str(morpheus['instance']['externalip'])
 def setup(mip):
     emailid=morpheus['customOptions']['fmoremailid']
     firstname=morpheus['customOptions']['ffirstname']
