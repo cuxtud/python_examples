@@ -6,7 +6,8 @@ ip=morpheus['container']['externalIp']
 strip=str(ip)
 print(ip)
 url="https://%s" % (strip)
-emailid=morpheus['customOptions']['fmoremailid']
+nemailid=morpheus['customOptions']['fmoremailid']
+emailid=str(nemailid)
 firstname=morpheus['customOptions']['ffirstname']
 morpheusurl="https://%s/api/setup/init" % (strip)
 print(morpheusurl)
