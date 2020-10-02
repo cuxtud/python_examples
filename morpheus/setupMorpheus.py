@@ -10,8 +10,10 @@ aurl=str(url)
 nemailid=morpheus['customOptions']['fmoremailid']
 emailid=str(nemailid)
 firstname=morpheus['customOptions']['ffirstname']
-smorpheusurl="https://%s/api/setup/init" % (strip)
-nmorpheusurl=str(smorpheusurl)
+smorpheusurl=str("https://%s/api/setup/init" % (strip))
+print(smorpheusurl)
+#nmorpheusurl=str(smorpheusurl)
+'''
 def setup():
     morpheusurl=nmorpheusurl
     body={ "applianceName": "myenterprise-morpheus", "applianceUrl": aurl, "accountName": "Morpheus", "username": "admin", "password": "69f49!632b13e", "email": "aabraham@morpheusdata.com", "firstName": firstname }
@@ -21,3 +23,4 @@ def setup():
     return data
 
 setup()
+'''
