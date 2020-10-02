@@ -13,6 +13,6 @@ def setup():
     b = json.dumps(body)
     response = requests.post(morpheusurl, headers=headers, data=b, verify=False)
     data = response.json()
-    return data
+    print(data)
 
 setup()
