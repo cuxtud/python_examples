@@ -16,3 +16,4 @@ def setup():
     print(data)
 
 setup()
+print("This Lab is for %s with email: %s. Login with username: admin and password: 69F49!632b13e") % (firstname,emailid)
