@@ -2,20 +2,12 @@ import requests
 import json
 
 headers="Content-Type: application/json"
-ip=morpheus['container']['externalIp']
-strip=str(ip)
-print(ip)
+ip=str(morpheus['container']['externalIp'])
 url=str("https://%s" % (strip))
-print(url)
-#aurl=str(url)
-nemailid=str(morpheus['customOptions']['fmoremailid'])
-print(nemailid)
-#emailid=str(nemailid)
+emailid=str(morpheus['customOptions']['fmoremailid'])
 firstname=morpheus['customOptions']['ffirstname']
-smorpheusurl=str("https://%s/api/setup/init" % (strip))
-print(smorpheusurl)
-#nmorpheusurl=str(smorpheusurl)
-'''
+morpheusurl=str("https://%s/api/setup/init" % (strip))
+
 def setup():
     morpheusurl=smorpheusurl
     body={ "applianceName": "myenterprise-morpheus", "applianceUrl": aurl, "accountName": "Morpheus", "username": "admin", "password": "69f49!632b13e", "email": "aabraham@morpheusdata.com", "firstName": firstname }
@@ -25,4 +17,3 @@ def setup():
     return data
 
 setup()
-'''
