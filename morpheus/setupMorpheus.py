@@ -6,17 +6,18 @@ ip=morpheus['container']['externalIp']
 strip=str(ip)
 print(ip)
 url="https://%s" % (strip)
-print(url)
+emailid=morpheus['customOptions']['fmoremailid']
+firstname=morpheus['customOptions']['ffirstname']
+morpheusurl="https://%s/api/setup/init" % (strip)
+print(morpheusurl)
 '''
 def setup(mip):
-    emailid=morpheus['customOptions']['fmoremailid']
-    firstname=morpheus['customOptions']['ffirstname']
-    morpheusurl="https://%s/api/setup/init" % (mip)
-    body={ "applianceName": "myenterprise-morpheus", "applianceUrl": "https://%s" % (mip), "accountName": "Morpheus", "username": "admin", "password": "69f49632b13e", "email": emailid, "firstName": firstname }
+    morpheusurl=morpheusurl
+    body={ "applianceName": "myenterprise-morpheus", "applianceUrl": url, "accountName": "Morpheus", "username": "admin", "password": "69f49632b13e", "email": emailid, "firstName": firstname }
     b = json.dumps(body)
     response = requests.post(morpheusurl, headers=headers, data=b)
     data = response.json()
     return data
 
-#setup(strip)
+setup(strip)
 '''
