@@ -5,7 +5,7 @@ headers="Content-Type: application/json"
 ip=str(morpheus['container']['externalIp'])
 url=str("https://%s" % (ip))
 emailid=str(morpheus['customOptions']['fmoremailid'])
-firstname=morpheus['customOptions']['ffirstname']
+firstname=str(morpheus['customOptions']['ffirstname'])
 morpheusurl=str("https://%s/api/setup/init" % (ip))
 
 def setup():
