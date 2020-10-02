@@ -1,4 +1,4 @@
-import request
+import requests
 
 ip=str(morpheus['container']['externalIp'])
 tokenurl=str("https://%s/oauth/token?grant_type=password&scope=write&client_id=morph-api"%(ip))
