@@ -9,7 +9,6 @@ def token():
     response = requests.post(tokenurl, headers=tokenheader, data=body, verify=False)
     data = response.json()
     return data
-    print(data)
 
 
 print(token())
