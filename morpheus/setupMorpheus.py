@@ -7,6 +7,7 @@ strip=str(ip)
 print(ip)
 url="https://%s" % (strip)
 print(url)
+'''
 def setup(mip):
     emailid=morpheus['customOptions']['fmoremailid']
     firstname=morpheus['customOptions']['ffirstname']
@@ -18,3 +19,4 @@ def setup(mip):
     return data
 
 #setup(strip)
+'''
