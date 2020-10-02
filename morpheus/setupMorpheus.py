@@ -1,7 +1,7 @@
 import requests
 import json
 
-headers="Content-Type: application/json"
+headers={'Content-Type': 'application/json'}
 ip=str(morpheus['container']['externalIp'])
 url=str("https://%s" % (ip))
 emailid=str(morpheus['customOptions']['fmoremailid'])
