@@ -10,8 +10,7 @@ emailid=morpheus['customOptions']['fmoremailid']
 firstname=morpheus['customOptions']['ffirstname']
 morpheusurl="https://%s/api/setup/init" % (strip)
 print(morpheusurl)
-'''
-def setup(mip):
+def setup():
     morpheusurl=morpheusurl
     body={ "applianceName": "myenterprise-morpheus", "applianceUrl": url, "accountName": "Morpheus", "username": "admin", "password": "69f49632b13e", "email": emailid, "firstName": firstname }
     b = json.dumps(body)
@@ -19,5 +18,4 @@ def setup(mip):
     data = response.json()
     return data
 
-setup(strip)
-'''
+setup()
