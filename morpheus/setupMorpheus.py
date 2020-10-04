@@ -52,6 +52,7 @@ def license_key():
 
 print("Get license key......")
 key=str(license_key())
+print(key)
 
 #Add license to the appliance
 license_headers={'Content-Type': 'application/json',"Accept":"application/json","Authorization": "BEARER " + (access_token)}
@@ -62,5 +63,5 @@ def license(lkey):
     data = response.json()
     print(data)
 
-print("Applying license key.......")
+print("Applying license key to appliance %s using token: %s and key %s") %(ip,access_token,key)
 license(key)
