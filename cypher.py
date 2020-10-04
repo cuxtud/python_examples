@@ -7,5 +7,5 @@ result = c.get("secret/labkey:license")
 print(result)
 print(result.values())
 pv=result.values()
-pp=pv[2:-1]
+pp=pv[2:]
 print(pp)
