@@ -25,8 +25,8 @@ def setup():
 #time.sleep(1200)
 
 #execute setup to run the initial setup of the appliance
-#setup()
-#print("This Lab is for %s with email: %s. Login with username: admin and password: 69F49!632b13e") % (firstname,emailid)
+setup()
+print("This Lab is for %s with email: %s. Login with username: admin and password: 69F49!632b13e") % (firstname,emailid)
 
 tokenurl=str("https://%s/oauth/token?grant_type=password&scope=write&client_id=morph-api"%(ip))
 tokenheader={'Content-Type': 'application/x-www-form-urlencoded'}
