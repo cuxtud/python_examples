@@ -39,6 +39,7 @@ def token():
     return access_token
 
 
+print("Get access token........")
 access_token=token()
 print(access_token)
 
@@ -49,6 +50,7 @@ def license_key():
     kv=(str(pv).strip('[]'))[2:-1]
     return kv
 
+print("Get license key......")
 key=license_key()
 
 #Add license to the appliance
@@ -60,4 +62,5 @@ def license(lkey):
     data = response.json()
     print(data)
 
+print("Applying license key.......")
 license(key)
