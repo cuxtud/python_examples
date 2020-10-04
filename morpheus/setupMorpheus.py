@@ -51,7 +51,7 @@ def license_key():
     return kv
 
 print("Get license key......")
-key=license_key()
+key=str(license_key())
 
 #Add license to the appliance
 license_headers={'Content-Type': 'application/json',"Accept":"application/json","Authorization": "BEARER " + (access_token)}
