@@ -1,6 +1,9 @@
 import requests
 import json
 import time
+from morpheuscypher import Cypher
+import os
+import sys
 
 headers={'Content-Type': 'application/json',"Accept":"application/json"}
 ip=str(morpheus['container']['externalIp'])
@@ -39,13 +42,20 @@ def token():
 access_token=token()
 print(access_token)
 
+def license_key():
+    c = Cypher(morpheus=morpheus)
+    result = c.get("secret/lklabs:license")
+    return result
+
+key=license_key()
+
 #Add license to the appliance
 license_headers={'Content-Type': 'application/json,"Accept":"application/json","Authorization": "BEARER " + (access_token)'}
-def license():
-    body={"license": ""}
+def license(lkey):
+    body={"license": lkey}
     b = json.dumps(body)
     response = requests.post(licenseurl, headers=license_headers, data=b, verify=False)
     data = response.json()
     print(data)
 
-license()
+license(key)
