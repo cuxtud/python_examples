@@ -44,8 +44,10 @@ print(access_token)
 
 def license_key():
     c = Cypher(morpheus=morpheus)
-    result = c.get("secret/lklabs:license")
-    return result
+    result = c.get("secret/labkey:license")
+    pv=result.values()
+    kv=(str(pv).strip('[]'))[2:-1]
+    return kv
 
 key=license_key()
 

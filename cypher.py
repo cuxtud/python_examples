@@ -6,5 +6,4 @@ c = Cypher(morpheus=morpheus)
 result = c.get("secret/labkey:license")
 pv=result.values()
 kv=(str(pv).strip('[]'))[2:-1]
-print(kv)
-print(kv[2:-1])
+return kv
