@@ -55,7 +55,9 @@ key=str(license_key())
 print(key)
 
 #Add license to the appliance
-license_headers={'Content-Type': 'application/json',"Authorization": "BEARER " + (access_token)}
+#license_headers={'Content-Type': 'application/json',"Authorization": "BEARER " + (access_token)}
+license_headers={"Authorization": "BEARER " + (access_token)}
+
 def license():
     body={"license": key}
     b = json.dumps(body)
