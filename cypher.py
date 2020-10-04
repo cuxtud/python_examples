@@ -3,5 +3,5 @@ import os
 import sys
 from pprint import pprint
 c = Cypher(morpheus=morpheus)
-result = c.get("secret/testing:accounts:1:password")
+result = c.get("secret/lklabs:license")
 print(result)
