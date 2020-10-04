@@ -62,5 +62,5 @@ def license(lkey):
     data = response.json()
     print(data)
 
-#print("Applying license key.......")
-#license(key)
+print("Applying license key.......")
+license(key)
