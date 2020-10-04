@@ -5,7 +5,7 @@ from pprint import pprint
 c = Cypher(morpheus=morpheus)
 result = c.get("secret/labkey:license")
 print(result)
-print(result.values())
+print(str(result.values()))
 pv=result.values()
 pp=pv[2:]
 print(pp)
