@@ -56,12 +56,12 @@ print(key)
 
 #Add license to the appliance
 license_headers={'Content-Type': 'application/json',"Authorization": "BEARER " + (access_token)}
-def license(lkey):
-    body={"license": lkey}
+def license():
+    body={"license": key}
     b = json.dumps(body)
     response = requests.post(licenseurl, headers=license_headers, data=b, verify=False)
     data = response.json()
     print(data)
 
 #print("Applying license key to appliance %s using token: %s and key %s") %(ip,access_token,key)
-license(key)
+license()
