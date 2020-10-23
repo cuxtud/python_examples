@@ -21,7 +21,7 @@ sys_id = data['results']
 print(sys_id)
 
 
-
+'''
 def create_relation(sys_id):
     url = 'https://dev47749.service-now.com/api/now/cmdb/instance/cmdb_ci_linux_server/64ab8da09f030200fe2ab0aec32e701b/relation?sysparm_fields=sys_id%2Cname'
     # Eg. User name="admin", Password="admin" for this code sample.
@@ -48,3 +48,4 @@ def create_relation(sys_id):
     # Decode the JSON response into a dictionary and use the data
     data = response.json()
     print(data)
+'''
