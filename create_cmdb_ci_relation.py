@@ -17,8 +17,8 @@ if response.status_code != 200:
     exit()
 # Decode the JSON response into a dictionary and use the data
 data = response.json()
-sys_id = data['results']
-print(sys_id)
+#sys_id = data['results']
+print(data)
 
 
 '''
