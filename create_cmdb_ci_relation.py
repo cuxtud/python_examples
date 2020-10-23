@@ -19,7 +19,8 @@ if response.status_code != 200:
 data = response.json()
 result = data['result']
 jresult= json.dumps(result)
-print(jresult)
+sys_id=jresult['sys_id']
+print(sys_id)
 
 
 '''
