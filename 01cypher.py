@@ -4,4 +4,6 @@ import sys
 from pprint import pprint
 c = Cypher(morpheus=morpheus)
 result = c.get("secret/testing:accounts:1")
-print(result)
+pv=result.values()
+kv=(str(pv).strip('[]'))[2:-1]
+print(kv)

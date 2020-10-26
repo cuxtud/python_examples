@@ -6,7 +6,7 @@ instance_name=morpheus['instance']['name']
 url = 'https://ven01434.service-now.com/api/now/cmdb/instance/cmdb_ci_vm_instance?sysparm_query=nameCONTAINS%s&sysparm_limit=1' % (instance_name)
 # Eg. User name="admin", Password="admin" for this code sample.
 user = 'admin'
-pwd = 'Pa55w0rd'
+pwd = ''
 # Set proper headers
 headers = {"Content-Type":"application/json","Accept":"application/json"}
 # Do the HTTP request
@@ -31,7 +31,7 @@ for i in result:
             url = 'https://ven01434.service-now.com/api/now/cmdb/instance/cmdb_ci_vm_instance/%s/relation' % (value)
             # Eg. User name="admin", Password="admin" for this code sample.
             user = 'admin'
-            pwd = 'Pa55w0rd'
+            pwd = ''
             # Set proper headers
             headers = {"Content-Type":"application/json","Accept":"application/json"}
             # Do the HTTP request
