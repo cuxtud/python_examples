@@ -22,11 +22,11 @@ def setup():
     print(data)
 
 #Sleep for 600secs before executing the setup
-time.sleep(1200)
+#time.sleep(1200)
 
 #execute setup to run the initial setup of the appliance
-setup()
-print("This Lab is for %s with email: %s. Login with username: admin and password: 69F49!632b13e") % (firstname,emailid)
+#setup()
+#print("This Lab is for %s with email: %s. Login with username: admin and password: 69F49!632b13e") % (firstname,emailid)
 
 tokenurl=str("https://%s/oauth/token?grant_type=password&scope=write&client_id=morph-api"%(ip))
 tokenheader={'Content-Type': 'application/x-www-form-urlencoded'}
@@ -40,13 +40,14 @@ def token():
 
 
 print("Get access token........")
-access_token=token()
+#access_token=token()
 print(access_token)
 
 def license_key():
     c = Cypher(morpheus=morpheus)
     result = c.get("secret/labkey:license")
     pv=result.values()
+    print(pv)
     kv=(str(pv).strip('[]'))[2:-1]
     return kv
 
@@ -66,4 +67,4 @@ def license():
     print(data)
 
 print("Applying license key to appliance %s using token: %s and key %s") %(ip,access_token,key)
-license()
+#license()
