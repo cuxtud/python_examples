@@ -22,7 +22,7 @@ def setup():
     print(data)
 
 #Sleep for 600secs before executing the setup
-#time.sleep(1200)
+time.sleep(1200)
 
 #execute setup to run the initial setup of the appliance
 setup()
@@ -65,5 +65,5 @@ def license():
     data = response.json()
     print(data)
 
-#print("Applying license key to appliance %s using token: %s and key %s") %(ip,access_token,key)
+print("Applying license key to appliance %s using token: %s and key %s") %(ip,access_token,key)
 license()
