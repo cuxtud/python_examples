@@ -1,8 +1,8 @@
-import requests
+####
 #Author: Anish Abraham
 #This script will fetch the users apiToken, appliance host and update some content on the instance wiki page
 #collecting data about appliance
-
+import requests
 host=morpheus['morpheus']['applianceHost']
 token=morpheus['morpheus']['apiAccessToken']
 instanceid=morpheus['instance']['id']
