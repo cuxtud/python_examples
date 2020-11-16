@@ -22,7 +22,7 @@ def setup():
     data = response.json()
     print(data)
 
-#Sleep for 600secs before executing the setup
+#Sleep for 900secs/15mins before executing the setup
 time.sleep(900)
 
 #execute setup to run the initial setup of the appliance
