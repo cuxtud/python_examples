@@ -23,7 +23,7 @@ def setup():
     print(data)
 
 #Sleep for 600secs before executing the setup
-time.sleep(1200)
+time.sleep(900)
 
 #execute setup to run the initial setup of the appliance
 setup()
