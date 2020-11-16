@@ -12,6 +12,7 @@ emailid=str(morpheus['customOptions']['fmoremailid'])
 firstname=str(morpheus['customOptions']['ffirstname'])
 morpheusurl=str("https://%s/api/setup/init" % (ip))
 licenseurl=str("https://%s/api/license" % (ip))
+key=str(morpheus['results']['getKey'])
 
 
 def setup():
@@ -52,7 +53,7 @@ def license_key():
     return kv
 
 print("Get license key......")
-key=str(license_key())
+#key=str(license_key())
 print(key)
 
 #Add license to the appliance
