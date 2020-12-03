@@ -62,8 +62,8 @@ if user1 == "Two":
 
 #Create bucket policy for the 2 users
 
-resourcename='az-bucketpolicy' + mbname 
-def policy(bucketname):
+mresourcename='az-bucketpolicy' + mbname 
+def policy(bucketname,resourcename):
     s3 = boto3.resource('s3')
     bucket_policy = s3.BucketPolicy(bucketname)
     newpolicy={
@@ -71,7 +71,7 @@ def policy(bucketname):
             {
             "Action": "s3:*",
             "Effect": "Allow",
-            "Resource": "arn:aws:s3:::" + bucketname,
+            "Resource": "arn:aws:s3:::" + resourcename,
             "Principal": {
                 "AWS": [
                 "arn:aws:iam::370459551696:user/anishtest3",
@@ -86,4 +86,4 @@ def policy(bucketname):
     Policy=jnewpolicy
 )
 time.sleep(20)
-policy(mbname)
+policy(mbname,mresourcename)
