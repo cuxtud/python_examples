@@ -1,6 +1,6 @@
 import boto3
 import time
-from datetime import date
+import datetime
 
 #Setting user inputs as global vars
 mbname=morpheus['customOptions']['fbname']
