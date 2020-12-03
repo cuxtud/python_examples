@@ -11,7 +11,8 @@ mapplication=morpheus['customOptions']['fapplication']
 #user1=morpheus['customOptions']['fnoofusers']
 
 #Get created date
-today = date.today()
+today_date = datetime.date.today()
+new_today_date = str(today_date.strftime("%d-%m-%Y"))
 
 def create_bucket(bucket_name,bucket_region):
     s3_client = boto3.client('s3')
@@ -64,7 +65,7 @@ def set_bucket_tags(bucket,username,createdon,businessservice,application):
         }
     )
 
-set_bucket_tags(mbname,musername,today,mbservice,mapplication)
+set_bucket_tags(mbname,musername,new_today_date,mbservice,mapplication)
 
 #Enable versioning
 def bucket_versioning(bucket_name):
