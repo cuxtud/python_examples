@@ -4,6 +4,7 @@ import time
 #Setting user inputs as global vars
 mbname=morpheus['customOptions']['fbname']
 s3region=morpheus['customOptions']['fregion']
+musername=morpheus['username']
 #user1=morpheus['customOptions']['fnoofusers']
 
 def create_bucket(bucket_name,bucket_region):
@@ -27,7 +28,7 @@ create_bucket(mbname,s3region)
 time.sleep(10)
 
 #Update tags to the bucket created
-def set_bucket_tags(bucket):
+def set_bucket_tags(bucket,username):
    s3 = boto3.resource('s3')
    bucket_tagging = s3.BucketTagging(bucket)
    response = bucket_tagging.put(
@@ -43,7 +44,7 @@ def set_bucket_tags(bucket):
                 },
                 {
                     'Key': 'RequestedBy',
-                    'Value': 'Value 2'
+                    'Value': username
                 },
                 {
                     'Key': 'CreatedOn',
@@ -52,12 +53,12 @@ def set_bucket_tags(bucket):
                 {
                     'Key': 'CostCentre',
                     'Value': 'Value 2'
-                },
+                }
             ]    
         }
     )
 
-set_bucket_tags(mbname)
+set_bucket_tags(mbname,musername)
 
 #Enable versioning
 def bucket_versioning(bucket_name):
