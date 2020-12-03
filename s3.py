@@ -1,11 +1,17 @@
 import boto3
 import time
+from datetime import date
 
 #Setting user inputs as global vars
 mbname=morpheus['customOptions']['fbname']
 s3region=morpheus['customOptions']['fregion']
 musername=morpheus['username']
+mbservice=morpheus['customOptions']['fbunit']
+mapplication=morpheus['customOptions']['fapplication']
 #user1=morpheus['customOptions']['fnoofusers']
+
+#Get created date
+today = date.today()
 
 def create_bucket(bucket_name,bucket_region):
     s3_client = boto3.client('s3')
@@ -28,7 +34,7 @@ create_bucket(mbname,s3region)
 time.sleep(10)
 
 #Update tags to the bucket created
-def set_bucket_tags(bucket,username):
+def set_bucket_tags(bucket,username,createdon,businessservice,application):
    s3 = boto3.resource('s3')
    bucket_tagging = s3.BucketTagging(bucket)
    response = bucket_tagging.put(
@@ -36,11 +42,11 @@ def set_bucket_tags(bucket,username):
             'TagSet': [
                 {
                     'Key': 'BusinessUnit', 
-                    'Value': 'Value 1'
+                    'Value': businessservice
                 },
                 {
                     'Key': 'Application',
-                    'Value': 'Value 2'
+                    'Value': application
                 },
                 {
                     'Key': 'RequestedBy',
@@ -48,17 +54,17 @@ def set_bucket_tags(bucket,username):
                 },
                 {
                     'Key': 'CreatedOn',
-                    'Value': 'Value 2'
+                    'Value': createdon
                 },
                 {
                     'Key': 'CostCentre',
-                    'Value': 'Value 2'
+                    'Value': '667076'
                 }
             ]    
         }
     )
 
-set_bucket_tags(mbname,musername)
+set_bucket_tags(mbname,musername,today,mbservice,mapplication)
 
 #Enable versioning
 def bucket_versioning(bucket_name):
