@@ -34,13 +34,25 @@ def set_bucket_tags(bucket):
         Tagging = {
             'TagSet': [
                 {
-                    'Key': 'Key 1', 
+                    'Key': 'BusinessUnit', 
                     'Value': 'Value 1'
                 },
                 {
-                    'Key': 'Key 2',
+                    'Key': 'Application',
                     'Value': 'Value 2'
-                } 
+                },
+                {
+                    'Key': 'RequestedBy',
+                    'Value': 'Value 2'
+                },
+                {
+                    'Key': 'CreatedOn',
+                    'Value': 'Value 2'
+                },
+                {
+                    'Key': 'CostCentre',
+                    'Value': 'Value 2'
+                },
             ]    
         }
     )
