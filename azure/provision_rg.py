@@ -3,6 +3,9 @@ from azure.mgmt.resource import ResourceManagementClient
 from azure.identity import AzureCliCredential
 import os
 
+#retrieve the value entered by user in operational workflow from morpheus
+rg_name=morpheus['customOptions']['fargname']
+
 # Acquire a credential object using CLI-based authentication.
 credential = AzureCliCredential()
 
@@ -15,7 +18,7 @@ resource_client = ResourceManagementClient(credential, subscription_id)
 
 # Provision the resource group.
 rg_result = resource_client.resource_groups.create_or_update(
-    "PythonAzureExample-rg",
+    rg_name,
     {
         "location": "centralus"
     }
@@ -40,7 +43,7 @@ print('Provisioned resource group {rg_result.name} in the {rg_result.location} r
 
 # Update the resource group with tags
 rg_result = resource_client.resource_groups.create_or_update(
-    "PythonAzureExample-rg",
+    rg_name,
     {
         "location": "centralus",
         "tags": { "environment":"test", "department":"tech" }
