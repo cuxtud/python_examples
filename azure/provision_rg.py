@@ -23,7 +23,7 @@ rg_result = resource_client.resource_groups.create_or_update(
         "location": "centralus"
     }
 )
-print(rg_result.name)
+
 
 # Within the ResourceManagementClient is an object named resource_groups,
 # which is of class ResourceGroupsOperations, which contains methods like
@@ -35,7 +35,7 @@ print(rg_result.name)
 # see Inline JSON pattern for object arguments at
 # https://docs.microsoft.com/azure/developer/python/azure-sdk-overview#inline-json-pattern-for-object-arguments.
 
-print('Provisioned resource group {rg_result.name} in the {rg_result.location} region')
+print('Provisioned resource group %s in the %s region') % (rg_result.name, rg_result.location)
 
 # The return value is another ResourceGroup object with all the details of the
 # new group. In this case the call is synchronous: the resource group has been
@@ -50,7 +50,7 @@ rg_result = resource_client.resource_groups.create_or_update(
     }
 )
 
-print('Updated resource group {rg_result.name} with tags')
+print('Updated resource group %s with tags') % (rg_result.name)
 
 # Optional lines to delete the resource group. begin_delete is asynchronous.
 # poller = resource_client.resource_groups.begin_delete(rg_result.name)
