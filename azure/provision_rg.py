@@ -7,7 +7,8 @@ import os
 credential = AzureCliCredential()
 
 # Retrieve subscription ID from environment variable.
-subscription_id = os.environ["AZURE_SUBSCRIPTION_ID"]
+#subscription_id = os.environ["AZURE_SUBSCRIPTION_ID"]
+subscription_id = "3b6ff759-299c-4a48-bef8-d1e612b57658"
 
 # Obtain the management object for resources.
 resource_client = ResourceManagementClient(credential, subscription_id)
