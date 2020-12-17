@@ -20,6 +20,7 @@ rg_result = resource_client.resource_groups.create_or_update(
         "location": "centralus"
     }
 )
+print(rg_result.name)
 
 # Within the ResourceManagementClient is an object named resource_groups,
 # which is of class ResourceGroupsOperations, which contains methods like
